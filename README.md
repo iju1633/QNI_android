@@ -6,6 +6,7 @@
 ![Spring-Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=Spring-Boot&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-FFCC00?style=flat-square&logo=Swagger&logoColor=white)
 ![RDS](https://img.shields.io/badge/Amazon_RDS-4285F4?style=flat-square&logo=Amazon-RDS&logoColor=white)
+![EC2](https://img.shields.io/badge/Amazon_EC2-4285F4?style=flat-square&logo=Amazon-EC2&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-4285F4?style=flat-square&logo=Docker&logoColor=white)
 
 This application asks you daily questions to help you understand yourself.
@@ -46,4 +47,4 @@ further explanation will be commented soon.
 
 [Jaeuk Im](https://github.com/iju1633)
 |:---:|
-|BACKEND|
+|BACKEND & ANDROID|
