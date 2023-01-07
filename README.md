@@ -18,7 +18,7 @@ Accordingly, I thought it would be nice if there was a service that asked questi
 In addition, the accumulated data can be used as a tool to share with loved ones in the future.
 
 ## 🖥️ UI Design
-- will be commented soon.
+[Figma Link](https://www.figma.com/file/ZY0M8jz6apBFTpYiXe5H4s/%ED%8C%8C%EC%9D%B4%ED%94%84-%EC%BD%94%EB%94%A9-%ED%81%B4%EB%9F%BD_%EA%B3%BC%EC%A0%9C?node-id=0%3A1&t=4G5qNN3cJOKI6Jc5-1)
 
 ## 💎 Main Features
 
