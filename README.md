@@ -6,6 +6,7 @@
 ![Spring-Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=Spring-Boot&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-FFCC00?style=flat-square&logo=Swagger&logoColor=white)
 ![RDS](https://img.shields.io/badge/Amazon_RDS-4285F4?style=flat-square&logo=Amazon-RDS&logoColor=white)
+![EC2](https://img.shields.io/badge/Amazon_EC2-4285F4?style=flat-square&logo=Amazon-EC2&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-4285F4?style=flat-square&logo=Docker&logoColor=white)
 
 This application asks you daily questions to help you understand yourself.
@@ -18,7 +19,7 @@ Accordingly, I thought it would be nice if there was a service that asked questi
 In addition, the accumulated data can be used as a tool to share with loved ones in the future.
 
 ## 🖥️ UI Design
-- will be commented soon.
+[Figma Link](https://www.figma.com/file/ZY0M8jz6apBFTpYiXe5H4s/%ED%8C%8C%EC%9D%B4%ED%94%84-%EC%BD%94%EB%94%A9-%ED%81%B4%EB%9F%BD_%EA%B3%BC%EC%A0%9C?node-id=0%3A1&t=4G5qNN3cJOKI6Jc5-1)
 
 ## 💎 Main Features
 
@@ -46,4 +47,4 @@ further explanation will be commented soon.
 
 [Jaeuk Im](https://github.com/iju1633)
 |:---:|
-|BACKEND|
+|BACKEND & ANDROID|
