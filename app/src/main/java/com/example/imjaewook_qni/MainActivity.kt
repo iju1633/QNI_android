@@ -7,7 +7,7 @@ import coil.load
 
 class MainActivity : AppCompatActivity() {
 
-    // https://quickchart.io/wordcloud?format=png&text=Four score and seven years ago...
+    private val baseURL = "https://quickchart.io/wordcloud?format=png&text="
 
     lateinit var image : ImageView
 
@@ -17,6 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         image = findViewById(R.id.image_view)
 
-        image.load("https://quickchart.io/wordcloud?format=png&text=Four score and seven years ago...")
+        image.load(baseURL + "Four score and seven years ago...")
     }
 }
