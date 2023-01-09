@@ -72,6 +72,7 @@ captures/
 *.ipr
 *~
 *.swp
+android/app/src/main/AndroidManifest.xml
 
 # Keystore files
 *.jks
