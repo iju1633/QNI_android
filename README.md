@@ -37,11 +37,15 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 ## 📃 API Specification
 
 This project utilize swagger Specification 2.0 and Swagger UI for communication with client.
-further explanation will be commented soon.
+![api 명세서](https://user-images.githubusercontent.com/43805087/211493584-0e317dad-2936-4f39-9125-3a9ce80f6a48.png)
 
 
 ## 🏛️ Depedency Used
-- will be commented soon.
+- implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+- implementation 'org.springframework.boot:spring-boot-starter-security'
+- implementation 'org.springframework.boot:spring-boot-starter-validation'
+- implementation 'org.springframework.boot:spring-boot-starter-web'
+- implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
 #### Contributor
 
