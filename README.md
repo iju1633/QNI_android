@@ -24,7 +24,7 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 ## 💎 Main Features
 
 - HTTP REST API Server configured With Spring Boot Application.
-- Deploying using docker.
+- Deploying using ec2 for now. Hoping to use Docker for deploying.
 - DB management using Amazon RDS.
 
 
@@ -36,9 +36,9 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 
 ## 📃 API Specification
 
-This project utilize swagger Specification 2.0 and Swagger UI for communication with client.
+[Swagger Link](http://3.35.39.43/swagger-ui/#/)  
+This project utilize swagger Specification 2.0 and Swagger UI for communication with client.  
 ![api 명세서](https://user-images.githubusercontent.com/43805087/211522965-e428082d-c009-4834-9300-d6e5f6e8e494.png)
-
 
 ## 🏛️ Depedency Used
 - Server
