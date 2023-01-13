@@ -1,8 +1,11 @@
 package com.example.imjaewook_qni.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -10,7 +13,9 @@ import com.example.imjaewook_qni.api.RetrofitInstance
 import com.example.imjaewook_qni.api.dto.LoginRequest
 import com.example.imjaewook_qni.api.dto.LoginResponse
 import com.example.imjaewook_qni.databinding.ActivityLoginBinding
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +51,13 @@ class LoginActivity : AppCompatActivity() {
 
             login();
         }
+
+        textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
+        textViewRegister.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent);
+        }
     }
 
     private fun login() {
@@ -58,24 +70,34 @@ class LoginActivity : AppCompatActivity() {
             pwd
         )
 
-        RetrofitInstance.api.userLogin(loginRequest).enqueue(object :Callback<LoginResponse>{
+        RetrofitInstance.api.userLogin(loginRequest).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(
                 call: Call<LoginResponse>,
                 response: Response<LoginResponse>
             ) {
-                if(response.isSuccessful) {
-                    Log.d("test", response.body().toString())
-                    val data = response.body().toString() // GsonConverter를 사용해 데이터매핑
-                    Log.v("로그인 성공!!! 아이디는  : ", data)
+                if (response.isSuccessful) { // TODO : 에러체크 필요 ! 로그인이 다 되고 있음
+                    val data = response.body()?.component1() // GsonConverter를 사용해 데이터매핑
+                    if (data != null) {
+                        Log.v("로그인 성공!!! 아이디는  : ", data)
+                    }
+                    Toast.makeText(this@LoginActivity, "Login Success !!", Toast.LENGTH_SHORT).show()
+
+                    // sharedPreference에 nickname 저장
+                    val sharedPreference = getSharedPreferences("shared", 0) // Private 모드
+                    val editor = sharedPreference.edit()
+                    editor.putString("nickname", data)
+                    editor.apply()
+
+                    sharedPreference.getString("nickname", "")?.let { Log.v("저장된 아이디 값 불러오기 : ", it) }
 
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 } else
-                    Toast.makeText(this@LoginActivity, "로그인에 실패했습니다", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.v("서버 통신 실패 !!!", "서버통신에 실패하였습니다.")
-                Toast.makeText(this@LoginActivity, "로그인에 실패했습니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT).show()
             }
         })
     }

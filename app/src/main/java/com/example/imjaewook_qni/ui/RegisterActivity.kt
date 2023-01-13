@@ -2,11 +2,12 @@ package com.example.imjaewook_qni.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imjaewook_qni.R
 import com.example.imjaewook_qni.api.RetrofitInstance
-import com.example.imjaewook_qni.api.dto.DefaultResponse
+import com.example.imjaewook_qni.api.dto.RegisterRequest
+import com.example.imjaewook_qni.databinding.ActivityRegisterBinding
 import kotlinx.android.synthetic.main.activity_login.buttonLogin
 import kotlinx.android.synthetic.main.activity_login.editTextPassword
 import kotlinx.android.synthetic.main.activity_login.editTextUid
@@ -17,9 +18,14 @@ import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRegisterBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         buttonLogin.setOnClickListener {
 
@@ -28,8 +34,8 @@ class RegisterActivity : AppCompatActivity() {
             val pwd = editTextPassword.text.toString().trim()
 
             if (nickname.isEmpty()) {
-                editTextUid.error = "Nickname required"
-                editTextUid.requestFocus()
+                editTextNickname.error = "Nickname required"
+                editTextNickname.requestFocus()
                 return@setOnClickListener
             }
 
@@ -39,43 +45,50 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             if (pwd.isEmpty()) {
                 editTextPassword.error = "Password required"
                 editTextPassword.requestFocus()
                 return@setOnClickListener
             }
 
-//            RetrofitInstance.retrofit.userRegister(nickname, uid, pwd)
-//                .enqueue(object : Callback<DefaultResponse> {
-//                    override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-//                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<DefaultResponse>,
-//                        response: Response<DefaultResponse>
-//                    ) {
-//                        if (!response.body()?.error!!) {
-//
-//                            val intent = Intent(applicationContext, MainActivity::class.java)
-//                            intent.flags =
-//                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//
-//                            startActivity(intent)
-//
-//
-//                        } else {
-//                            Toast.makeText(
-//                                applicationContext,
-//                                response.body()?.message,
-//                                Toast.LENGTH_LONG
-//                            ).show()
-//                        }
-//
-//                    }
-//                })
-
+            register();
         }
     }
+
+    private fun register() {
+
+        val nickname = binding.editTextNickname.text.toString()
+        val uid = binding.editTextUid.text.toString()
+        val pwd = binding.editTextPassword.text.toString()
+
+        val registerRequest = RegisterRequest(
+            nickname,
+            uid,
+            pwd
+        )
+
+        RetrofitInstance.api.userRegister(registerRequest).enqueue(object : Callback<Void> {
+            override fun onResponse(
+                call: Call<Void>,
+                response: Response<Void>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("test", response.body().toString())
+                    val data = response.body().toString()
+                    Log.v("회원가입 성공!!!", data)
+                    Toast.makeText(this@RegisterActivity, "Register Success !!", Toast.LENGTH_SHORT).show()
+
+                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                } else
+                    Toast.makeText(this@RegisterActivity, "Register Failed !!", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.v("서버 통신 실패 !!!", "서버통신에 실패하였습니다.")
+                Toast.makeText(this@RegisterActivity, "Register Failed !!", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 }

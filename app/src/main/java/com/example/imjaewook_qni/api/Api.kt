@@ -2,7 +2,7 @@ package com.example.imjaewook_qni.api
 
 import com.example.imjaewook_qni.api.dto.LoginRequest
 import com.example.imjaewook_qni.api.dto.LoginResponse
-import com.example.imjaewook_qni.api.dto.Register
+import com.example.imjaewook_qni.api.dto.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -13,5 +13,5 @@ interface Api {
     fun userLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
     @POST("/user/register")
-    fun userRegister(@Body register : Register): Call<Register>
+    fun userRegister(@Body register : RegisterRequest): Call<Void>
 }
