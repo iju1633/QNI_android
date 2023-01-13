@@ -6,13 +6,25 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/logo.xml" value="0.1965" />
+        <entry key="app/src/main/res/drawable/question_box.xml" value="0.2645" />
         <entry key="app/src/main/res/drawable/tile_drawable.xml" value="0.1965" />
+        <entry key="app/src/main/res/font-v26/qnifont.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/font/qnifont.xml" value="0.16296296296296298" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.259375" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/layout/activity_wordcloud.xml" value="0.31465911865234375" />
+        <entry key="app/src/main/res/layout/setting_activity.xml" value="0.259375" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectResources">
+    <resource url="http://schemas.android.com/apk/res/android" location="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -14,9 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:paddingHorizontal="40dp"
-        tools:ignore="MissingConstraints"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,21 +1,22 @@
-package com.example.imjaewook_qni
+package com.example.imjaewook_qni.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.example.imjaewook_qni.R
 
-class MainActivity : AppCompatActivity() {
+class WordCloudActivity : AppCompatActivity() {
 
     private val baseURL = "https://quickchart.io/wordcloud?format=png&text="
 
-    lateinit var image : ImageView
+    private lateinit var image: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_wordcloud)
 
-        image = findViewById(R.id.image_view)
+        image = findViewById(R.id.wordCloud)
 
         image.load(baseURL + "Four score and seven years ago...")
     }
