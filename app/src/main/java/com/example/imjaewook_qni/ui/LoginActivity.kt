@@ -1,11 +1,9 @@
 package com.example.imjaewook_qni.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -13,9 +11,7 @@ import com.example.imjaewook_qni.api.RetrofitInstance
 import com.example.imjaewook_qni.api.dto.LoginRequest
 import com.example.imjaewook_qni.api.dto.LoginResponse
 import com.example.imjaewook_qni.databinding.ActivityLoginBinding
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

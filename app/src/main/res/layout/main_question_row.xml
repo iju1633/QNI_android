@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:layout_margin="5dp"
+    android:background="?android:attr/colorBackground"
+    android:clipChildren="false">
+
+    <TextView
+        android:id="@+id/questionBox"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/white_box"
+        android:backgroundTint="?android:attr/colorBackground"
+        android:elevation="5dp" />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/main_question_icon"
+        android:elevation="5dp" />
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="12dp"
+        android:clipChildren="false"
+        android:elevation="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/questionId"
+
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/qnifont"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/qnifont"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
