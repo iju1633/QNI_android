@@ -41,7 +41,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
             val secondIntent = intent
             val chosenQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0)
 
-            activityUpdateAnswerBinding.idAndQuestion.text = answeredQuestion[chosenQuestionId].questionId.toString() + ". " + answeredQuestion[chosenQuestionId].question
+            activityUpdateAnswerBinding.question.text = answeredQuestion[chosenQuestionId].questionId.toString() + ". " + answeredQuestion[chosenQuestionId].question
             activityUpdateAnswerBinding.answerBox.text = answeredQuestion[chosenQuestionId].answer
         }
     }
