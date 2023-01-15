@@ -1,12 +1,15 @@
 package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imjaewook_qni.R
+import dagger.hilt.android.AndroidEntryPoint
+
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

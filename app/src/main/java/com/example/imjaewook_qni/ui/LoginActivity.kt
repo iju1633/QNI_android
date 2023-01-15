@@ -5,101 +5,116 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-
+import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.RetrofitInstance
-import com.example.imjaewook_qni.api.dto.LoginRequest
-import com.example.imjaewook_qni.api.dto.LoginResponse
-import com.example.imjaewook_qni.databinding.ActivityLoginBinding
-import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
+import com.example.imjaewook_qni.api.dto.LoginDTO
+import com.example.imjaewook_qni.api.dto.LoginResponseDTO
+import com.example.imjaewook_qni.databinding.ActivityLoginBinding
+import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
+
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
-
+    private lateinit var activityLoginBinding: ActivityLoginBinding
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+        setUpUI()
+        setUpViewModel()
+    }
 
-        buttonLogin.setOnClickListener {
+    private fun setUpViewModel() {
 
-            val uid = editTextUid.text.toString().trim()
-            val pwd = editTextPassword.text.toString().trim()
+        loginViewModel.loginResponseDTOLiveData.observe(this) { response ->
+            response?.let {
+
+                if (it.isSuccessful) {
+
+                    response.body()?.let { it1 -> Log.v("로그인된 유저의 id : ", it1.userId) }
+                    response.body()?.let { it1 ->
+                        Log.v(
+                            "로그인된 유저의 nickname : ",
+                            it1.nickname
+                        )
+                    }
+//                    response.body()
+//                        ?.let { it1 -> ImJaeWookQniApplication.prefs.setString("userId", it1.userId) }
+//                    response.body()
+//                        ?.let { it1 -> ImJaeWookQniApplication.prefs.setString("nickname", it1.nickname) }
+
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+                    // log
+                    Log.v("로그인된 유저의 id : ", ImJaeWookQniApplication.prefs.getString("userId", "no userId"))
+                    Log.v(
+                        "로그인된 유저의 nickname : ",
+                        ImJaeWookQniApplication.prefs.getString("nickname", "no nickname")
+                    )
+                } else
+                    Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT)
+                        .show()
+            }
+        }
+    }
+
+    private fun setUpUI() {
+
+        setUpViewBinding()
+
+        activityLoginBinding.buttonLogin.setOnClickListener {
+
+            val uid = activityLoginBinding.editTextUid.text.toString()
+            val pwd = activityLoginBinding.editTextPassword.text.toString()
 
             if (uid.isEmpty()) {
-                editTextUid.error = "User ID required"
-                editTextUid.requestFocus()
+                activityLoginBinding.editTextUid.error = "User ID required"
+                activityLoginBinding.editTextUid.requestFocus()
                 return@setOnClickListener
             }
-
 
             if (pwd.isEmpty()) {
-                editTextPassword.error = "Password required"
-                editTextPassword.requestFocus()
+                activityLoginBinding.editTextPassword.error = "Password required"
+                activityLoginBinding.editTextPassword.requestFocus()
                 return@setOnClickListener
             }
 
-            login();
+            login()
         }
 
-        textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        activityLoginBinding.textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
-        textViewRegister.setOnClickListener {
+        activityLoginBinding.textViewRegister.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
         }
+    }
+
+    private fun setUpViewBinding() {
+        activityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(activityLoginBinding.root)
     }
 
     private fun login() {
 
-        val uid = binding.editTextUid.text.toString()
-        val pwd = binding.editTextPassword.text.toString()
+        val uid = activityLoginBinding.editTextUid.text.toString()
+        val pwd = activityLoginBinding.editTextPassword.text.toString()
 
-        val loginRequest = LoginRequest(
+        val loginDTO = LoginDTO(
             uid,
             pwd
         )
 
-        RetrofitInstance.api.userLogin(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(
-                call: Call<LoginResponse>,
-                response: Response<LoginResponse>
-            ) {
-                if (response.isSuccessful) { // TODO : 에러체크 필요 ! 로그인이 다 되고 있음
-                    val data = response.body()?.component1() // GsonConverter를 사용해 데이터매핑
-                    if (data != null) {
-                        Log.v("로그인 성공!!! 아이디는  : ", data)
-                    }
-                    Toast.makeText(this@LoginActivity, "Login Success !!", Toast.LENGTH_SHORT).show()
-
-                    // sharedPreference에 nickname 저장
-                    val sharedPreference = getSharedPreferences("shared", 0) // Private 모드
-                    val editor = sharedPreference.edit()
-                    editor.putString("nickname", data)
-                    editor.apply()
-
-                    sharedPreference.getString("nickname", "")?.let { Log.v("저장된 아이디 값 불러오기 : ", it) }
-
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                } else
-                    Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.v("서버 통신 실패 !!!", "서버통신에 실패하였습니다.")
-                Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT).show()
-            }
-        })
+        loginViewModel.userLogin(loginDTO)
     }
-
-
 }
-
 
 

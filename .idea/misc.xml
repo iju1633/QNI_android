@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/layout/activity_update_answer.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_wordcloud.xml" value="0.31465911865234375" />
         <entry key="app/src/main/res/layout/main_answered_question_row.xml" value="0.33559782608695654" />
         <entry key="app/src/main/res/layout/main_question_row.xml" value="0.33559782608695654" />
