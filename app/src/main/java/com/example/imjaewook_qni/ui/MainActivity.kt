@@ -103,16 +103,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(nextIntent)
             }
         })
-
-        getData()
-    }
-
-    private fun getData() {
-
-        // val userId = ImJaeWookQniApplication.prefs.getString("userId", "no userId")
-
-        mainViewModel.getUserQuestionList(3L)
-        mainViewModel.getAnsweredUserQuestionList(3L)
     }
 
     private fun initRecyclerView() {
@@ -125,13 +115,13 @@ class MainActivity : AppCompatActivity() {
 
         activityMainBinding.questionRecyclerView.layoutManager = LinearLayoutManager(
             this,
-            LinearLayoutManager.HORIZONTAL,
+            LinearLayoutManager.VERTICAL,
             false
         )
 
         activityMainBinding.answeredQuestionRecyclerView.layoutManager = LinearLayoutManager(
             this,
-            LinearLayoutManager.HORIZONTAL,
+            LinearLayoutManager.VERTICAL,
             false
         )
 

@@ -20,9 +20,6 @@ class AnswerUpdateActivity : AppCompatActivity() {
 
     private val answerViewModel : AnswerViewModel by viewModels()
 
-    val sharedPreference: SharedPreferences = getSharedPreferences("shared", 0)
-    val userId = sharedPreference.getString("userId", "")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,7 +30,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        userId?.let { answerViewModel.getUserQuestionList(it.toLong()) }
+        answerViewModel.getUserQuestionList(3L)
     }
 
     @SuppressLint("SetTextI18n")

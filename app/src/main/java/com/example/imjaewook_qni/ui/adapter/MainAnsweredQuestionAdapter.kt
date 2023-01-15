@@ -29,7 +29,7 @@ class MainAnsweredQuestionAdapter(items: List<AnsweredQuestionDTO>) : RecyclerVi
         }
 
         fun bind(item: AnsweredQuestionDTO) {
-            binding.questionId.text = item.question
+            binding.questionId.text = item.questionId.toString()
             binding.question.text = item.question
         }
     }

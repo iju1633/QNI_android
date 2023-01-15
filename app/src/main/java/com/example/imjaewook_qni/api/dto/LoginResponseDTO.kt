@@ -5,8 +5,3 @@ data class LoginResponseDTO(
     val nickname : String,
     val userId : String
 )
-
-
-
-
-

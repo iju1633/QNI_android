@@ -10,16 +10,15 @@ import com.example.imjaewook_qni.api.dto.AnswerDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
 import com.example.imjaewook_qni.databinding.ActivitySaveAnswerBinding
 import com.example.imjaewook_qni.ui.viewmodel.AnswerViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AnswerSaveActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var activitySaveAnswerBinding: ActivitySaveAnswerBinding
 
     private val answerViewModel : AnswerViewModel by viewModels()
-
-    val sharedPreference: SharedPreferences = getSharedPreferences("shared", 0)
-    val userId = sharedPreference.getString("userId", "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +30,7 @@ class AnswerSaveActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        userId?.let { answerViewModel.getUserQuestionList(it.toLong()) }
+        answerViewModel.getUserQuestionList(3L)
     }
 
     @SuppressLint("SetTextI18n")
