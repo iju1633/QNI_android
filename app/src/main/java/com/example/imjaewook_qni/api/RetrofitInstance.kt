@@ -11,24 +11,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitInstance {
-
-//    var userApi: UserApi
-//
-//
-//    init {
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl(Const.BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        userApi = retrofit.create(UserApi::class.java)
-//    }
 
     @Provides
     @Singleton

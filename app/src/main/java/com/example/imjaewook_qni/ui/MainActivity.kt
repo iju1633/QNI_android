@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.AnsweredQuestionDTO
 import com.example.imjaewook_qni.api.dto.QuestionAnswerDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
@@ -47,6 +46,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, WordCloudActivity::class.java)
             startActivity(intent)
         }
+
+        activityMainBinding.logout.setOnClickListener {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        mainViewModel.getAnsweredUserQuestionList(3L)
+        mainViewModel.getUserQuestionList(3L)
     }
 
     private fun setUpViewModel() {
@@ -69,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         setUpViewBinding()
         initRecyclerView()
 
-        activityMainBinding.nickname.text = ImJaeWookQniApplication.prefs.getString("nickname", "")
+        activityMainBinding.nickname.text = "venom"
 
         mainQuestionAdapter.setOnItemClickListener(object :
             MainQuestionAdapter.OnItemClickListener {
@@ -98,10 +109,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getData() {
 
-        val userId = ImJaeWookQniApplication.prefs.getString("userId", "no userId")
+        // val userId = ImJaeWookQniApplication.prefs.getString("userId", "no userId")
 
-        mainViewModel.getUserQuestionList(userId.toLong())
-        mainViewModel.getAnsweredUserQuestionList(userId.toLong())
+        mainViewModel.getUserQuestionList(3L)
+        mainViewModel.getAnsweredUserQuestionList(3L)
     }
 
     private fun initRecyclerView() {

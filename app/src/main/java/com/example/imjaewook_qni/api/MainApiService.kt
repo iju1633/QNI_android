@@ -9,13 +9,11 @@ import retrofit2.http.*
 
 interface MainApiService {
 
-    @FormUrlEncoded
     @GET("/question/list/userId/{userId}")
     suspend fun getUserQuestions(
         @Path(value = "userId", encoded = true) userId : String
     ) : Response<List<QuestionAnswerDTO>>
 
-    @FormUrlEncoded
     @GET("/question/answered/list/userId/{userId}")
     suspend fun getUserAnsweredQuestions(
         @Path(value = "userId", encoded = true) userId : String

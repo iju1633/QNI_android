@@ -3,21 +3,14 @@ package com.example.imjaewook_qni.ui
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imjaewook_qni.ImJaeWookQniApplication
-import com.example.imjaewook_qni.api.RetrofitInstance
 
 import com.example.imjaewook_qni.api.dto.LoginDTO
-import com.example.imjaewook_qni.api.dto.LoginResponseDTO
 import com.example.imjaewook_qni.databinding.ActivityLoginBinding
 import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -39,27 +32,24 @@ class LoginActivity : AppCompatActivity() {
 
                 if (it.isSuccessful) {
 
-                    response.body()?.let { it1 -> Log.v("로그인된 유저의 id : ", it1.userId) }
-                    response.body()?.let { it1 ->
-                        Log.v(
-                            "로그인된 유저의 nickname : ",
-                            it1.nickname
-                        )
-                    }
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                }
 //                    response.body()
 //                        ?.let { it1 -> ImJaeWookQniApplication.prefs.setString("userId", it1.userId) }
 //                    response.body()
 //                        ?.let { it1 -> ImJaeWookQniApplication.prefs.setString("nickname", it1.nickname) }
 
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 
-                    // log
-                    Log.v("로그인된 유저의 id : ", ImJaeWookQniApplication.prefs.getString("userId", "no userId"))
-                    Log.v(
-                        "로그인된 유저의 nickname : ",
-                        ImJaeWookQniApplication.prefs.getString("nickname", "no nickname")
-                    )
-                } else
+//                // log
+//                Log.v(
+//                    "로그인된 유저의 id : ",
+//                    ImJaeWookQniApplication.prefs.getString("userId", "no userId")
+//                )
+//                Log.v(
+//                    "로그인된 유저의 nickname : ",
+//                    ImJaeWookQniApplication.prefs.getString("nickname", "no nickname")
+//                )
+                else
                     Toast.makeText(this@LoginActivity, "Login Failed !!", Toast.LENGTH_SHORT)
                         .show()
             }
@@ -88,6 +78,9 @@ class LoginActivity : AppCompatActivity() {
             }
 
             login()
+
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
         }
 
         activityLoginBinding.textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG

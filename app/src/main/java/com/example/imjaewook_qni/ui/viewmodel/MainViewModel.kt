@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.imjaewook_qni.api.dto.AnsweredQuestionDTO
 import com.example.imjaewook_qni.api.dto.QuestionAnswerDTO
 import com.example.imjaewook_qni.ui.repository.MainRepository
-import com.example.imjaewook_qni.ui.repository.UserRepository
 import com.example.imjaewook_qni.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -53,9 +52,7 @@ class MainViewModel @Inject constructor(
                 Log.d("tag", "getUserQuestionList: has an error receiving data")
             }
         }
-
     }
-
 
     fun getAnsweredUserQuestionList(userId: Long) = viewModelScope.launch(Dispatchers.Main) {
 
@@ -75,8 +72,5 @@ class MainViewModel @Inject constructor(
                 Log.d("tag", "getUserAnsweredQuestionList: has an error receiving data")
             }
         }
-
     }
-
-
 }
