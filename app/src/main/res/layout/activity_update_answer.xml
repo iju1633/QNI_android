@@ -9,12 +9,13 @@
 
     <TextView
         android:id="@+id/question"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_gravity="center"
         android:fontFamily="@font/qnifont"
         android:paddingTop="30dp"
-        android:text="Question"
+        android:text="love vs friend"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp" />
 
@@ -27,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/white_box"
         android:fontFamily="@font/qnifont"
-        android:hint="A."
+        android:hint="I would choose love love love instead of friend friend."
         android:paddingStart="20dp"
         android:paddingTop="50dp"
         android:textColor="@color/colorPrimaryDark"
