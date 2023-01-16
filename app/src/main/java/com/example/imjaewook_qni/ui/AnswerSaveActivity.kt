@@ -43,32 +43,38 @@ class AnswerSaveActivity : AppCompatActivity() {
 
             activitySaveAnswerBinding.idAndQuestion.text = question[chosenQuestionId].questionId.toString() + ". " + question[chosenQuestionId].question
         }
+
+        answerViewModel.saveAnswerResponseLiveData.observe(this) { response ->
+            response.let {
+                if (it.isSuccessful) {
+                    Toast.makeText(
+                        this@AnswerSaveActivity,
+                        "Your answer has been saved !!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this@AnswerSaveActivity,
+                        "Internal Error has been occurred. Please try once more",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
 
     private fun setUpUI() {
         setUpViewBinding()
 
-        val answerDTO = AnswerDTO("", 0L, 0L) // questionId 와 userId 가 0인 경우는 없음
         activitySaveAnswerBinding.answerSaveButton.setOnClickListener {
+
+            val answer = activitySaveAnswerBinding.answerBox.text.toString()
+            val questionId = activitySaveAnswerBinding.idAndQuestion.text.subSequence(0, 1).toString().toLong()
+            val userId = 3L
+
+            val answerDTO = AnswerDTO(answer, questionId, userId)
+
             answerViewModel.saveAnswer(answerDTO)
-            // POST 요청
-            answerViewModel.saveAnswerResponseLiveData.observe(this) { response ->
-                response.let {
-                    if (it.isSuccessful) {
-                        Toast.makeText(
-                            this@AnswerSaveActivity,
-                            "Your answer has been saved !!",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this@AnswerSaveActivity,
-                            "Internal Error has been occurred. Please try once more",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-            }
         }
     }
 
