@@ -3,10 +3,14 @@ package com.example.imjaewook_qni.ui
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.imjaewook_qni.R
 import com.example.imjaewook_qni.api.dto.AnswerDTO
+import com.example.imjaewook_qni.api.dto.AnswerUpdateDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
 import com.example.imjaewook_qni.databinding.ActivityUpdateAnswerBinding
 import com.example.imjaewook_qni.ui.viewmodel.AnswerViewModel
@@ -49,24 +53,46 @@ class AnswerUpdateActivity : AppCompatActivity() {
     private fun setUpUI() {
         setUpViewBinding()
 
-        val answerDTO = AnswerDTO("", 0L, 0L) // questionId 와 userId 가 0인 경우는 없음
-        activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
-            answerViewModel.saveAnswer(answerDTO)
-            // POST 요청
-            answerViewModel.updateAnswerResponseLiveData.observe(this) { response ->
-                response.let {
-                    if (it.isSuccessful) {
-                        Toast.makeText(
-                            this@AnswerUpdateActivity,
-                            "Your answer has been updated !!",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this@AnswerUpdateActivity,
-                            "Internal Error has been occurred. Please try once more",
-                            Toast.LENGTH_LONG
-                        ).show()
+        activityUpdateAnswerBinding.answerBox.setOnClickListener {
+
+            val secondIntent = intent
+            val chosenQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0)
+
+            val builder = AlertDialog.Builder(this)
+
+            val dialogView = layoutInflater.inflate(R.layout.update_answer_dialog, null)
+            val dialogText = dialogView.findViewById<EditText>(R.id.newAnswer)
+
+            builder.setView(dialogView)
+                .setPositiveButton("save") { dialogInterface, i ->
+                    activityUpdateAnswerBinding.answerBox.text = dialogText.text.toString()
+                }
+                .setNegativeButton("cancel") {dialogInterface, i ->
+
+                }
+                .setIcon(R.drawable.logo)
+                .show()
+
+            activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
+                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), chosenQuestionId.toString(), 3L)
+
+                answerViewModel.updateAnswer(answerUpdateDTO)
+                // POST 요청
+                answerViewModel.updateAnswerResponseLiveData.observe(this) { response ->
+                    response.let {
+                        if (it.isSuccessful) {
+                            Toast.makeText(
+                                this@AnswerUpdateActivity,
+                                "Your answer has been updated !!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                this@AnswerUpdateActivity,
+                                "Internal Error has been occurred. Please try once more",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }

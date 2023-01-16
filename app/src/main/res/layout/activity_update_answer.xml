@@ -28,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/white_box"
         android:fontFamily="@font/qnifont"
-        android:hint="I would choose love love love instead of friend friend."
+        android:hint="Your written answer will be set here."
         android:paddingStart="20dp"
         android:paddingTop="50dp"
         android:textColor="@color/colorPrimaryDark"
