@@ -2,4 +2,5 @@
 <resources>
     <color name="colorPrimary">#ffde59</color>
     <color name="colorPrimaryDark">#ffbd59</color>
+    <color name="answeredBox">#5C5C5C</color>
 </resources>

@@ -4,8 +4,10 @@ import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.AnsweredQuestionDTO
 import com.example.imjaewook_qni.api.dto.QuestionAnswerDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
@@ -21,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mainQuestionAdapter: MainQuestionAdapter
     lateinit var mainAnsweredQuestionAdapter: MainAnsweredQuestionAdapter
-
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var activitySaveAnswerBinding: ActivitySaveAnswerBinding
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        mainViewModel.getAnsweredUserQuestionList(3L)
+        mainViewModel.getAnsweredUserQuestionList(3L) // TODO: 로그인된 유저의 id를 넣을 것
         mainViewModel.getUserQuestionList(3L)
     }
 
@@ -65,6 +66,15 @@ class MainActivity : AppCompatActivity() {
 
             activityMainBinding.apply {
                 mainQuestionAdapter.itemList = questionResponse
+            }
+
+            // 답변이 완료된 문제의 경우, 해당 문제의 id를 전역변수로 선언한 배열에 저장
+            for(questionAnswerDTO : QuestionAnswerDTO in questionResponse) {
+                if(questionAnswerDTO.answer.isNotEmpty()) {
+                    ImJaeWookQniApplication.answeredQuestionIdList.distinct().plus(questionAnswerDTO.questionId)
+
+                    Log.v("답안이 작성된 질문의 id : " , questionAnswerDTO.questionId.toString())
+                }
             }
         }
 

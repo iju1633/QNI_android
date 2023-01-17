@@ -40,13 +40,22 @@ class AnswerUpdateActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun setUpViewModel() {
 
-        answerViewModel.answeredQuestionDTOLiveData.observe(this) { answeredQuestion ->
-
-            val secondIntent = intent
-            val chosenQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0)
-
-            activityUpdateAnswerBinding.question.text = answeredQuestion[chosenQuestionId].questionId.toString() + ". " + answeredQuestion[chosenQuestionId].question
-            activityUpdateAnswerBinding.answerBox.text = answeredQuestion[chosenQuestionId].answer
+        answerViewModel.updateAnswerResponseLiveData.observe(this) { response ->
+            response.let {
+                if (it.isSuccessful) {
+                    Toast.makeText(
+                        this@AnswerUpdateActivity,
+                        "Your answer has been updated !!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this@AnswerUpdateActivity,
+                        "You should write at least one word.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
     }
 
@@ -56,7 +65,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
         activityUpdateAnswerBinding.answerBox.setOnClickListener {
 
             val secondIntent = intent
-            val chosenQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0)
+            val chosenQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0) // TODO: 값이 안 넘어왔음
 
             val builder = AlertDialog.Builder(this)
 
@@ -74,27 +83,9 @@ class AnswerUpdateActivity : AppCompatActivity() {
                 .show()
 
             activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
-                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), chosenQuestionId.toString(), 3L)
+                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), "3", 3L)
 
                 answerViewModel.updateAnswer(answerUpdateDTO)
-                // POST 요청
-                answerViewModel.updateAnswerResponseLiveData.observe(this) { response ->
-                    response.let {
-                        if (it.isSuccessful) {
-                            Toast.makeText(
-                                this@AnswerUpdateActivity,
-                                "Your answer has been updated !!",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        } else {
-                            Toast.makeText(
-                                this@AnswerUpdateActivity,
-                                "Internal Error has been occurred. Please try once more",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                }
             }
         }
     }

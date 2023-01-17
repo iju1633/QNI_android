@@ -1,7 +1,6 @@
 package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.imjaewook_qni.api.dto.AnswerDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
 import com.example.imjaewook_qni.databinding.ActivitySaveAnswerBinding
+import com.example.imjaewook_qni.databinding.ActivityUpdateAnswerBinding
 import com.example.imjaewook_qni.ui.viewmodel.AnswerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +42,7 @@ class AnswerSaveActivity : AppCompatActivity() {
             val chosenQuestionId = secondIntent.getIntExtra("ChosenQuestionId", 0)
 
             activitySaveAnswerBinding.idAndQuestion.text = question[chosenQuestionId].questionId.toString() + ". " + question[chosenQuestionId].question
+            activitySaveAnswerBinding.answerBox.setText("A. " + question[chosenQuestionId].answer)
         }
 
         answerViewModel.saveAnswerResponseLiveData.observe(this) { response ->
@@ -55,7 +56,7 @@ class AnswerSaveActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@AnswerSaveActivity,
-                        "Internal Error has been occurred. Please try once more",
+                        "You already answered this question.",
                         Toast.LENGTH_LONG
                     ).show()
                 }
