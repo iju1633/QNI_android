@@ -1,8 +1,12 @@
 package com.example.imjaewook_qni.api.dto
 
+import com.google.gson.annotations.SerializedName
+
 data class LoginDTO(
 
-    val pwd: String,
-    val uid: String
+    @SerializedName("uid")
+    val uid: String,
+    @SerializedName("pwd")
+    val pwd: String
 )
 

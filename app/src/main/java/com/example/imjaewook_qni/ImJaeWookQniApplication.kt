@@ -13,6 +13,8 @@ class ImJaeWookQniApplication : Application(), Configuration.Provider {
     companion object {
         lateinit var prefs: PreferenceUtil
         var answeredQuestionIdList = ArrayList<String>()
+        var userId = "0"
+        var nickname = "null"
     }
 
     override fun onCreate() {
