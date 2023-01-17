@@ -24,6 +24,7 @@
         android:layout_marginTop="12dp"
         android:clipChildren="false"
         android:elevation="5dp"
+        android:paddingRight="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -38,20 +39,34 @@
         <TextView
             android:id="@+id/question"
             android:layout_width="250dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/qnifont"
-            android:layout_weight="0.5"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/answer"
-            android:layout_width="250dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="10dp"
-            android:fontFamily="@font/qnifont"
-            android:layout_weight="0.5"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="A. "
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/qnifont"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/qnifont"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

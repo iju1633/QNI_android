@@ -31,7 +31,7 @@ class MainAnsweredQuestionAdapter(items: List<AnsweredQuestionDTO>) : RecyclerVi
         fun bind(item: AnsweredQuestionDTO) {
             binding.questionId.text = item.questionId.toString()
             binding.question.text = item.question
-            ("A. " + item.answer).also { binding.answer.text = it }
+            (item.answer).also { binding.answer.text = it }
         }
     }
 

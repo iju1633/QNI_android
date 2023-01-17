@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        mainViewModel.getAnsweredUserQuestionList(3L) // TODO: 로그인된 유저의 id를 넣을 것
-        mainViewModel.getUserQuestionList(3L)
+        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.userId.toLong())
+        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.userId.toLong())
     }
 
     private fun setUpViewModel() {
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 if(questionAnswerDTO.answer.isNotEmpty()) {
                     ImJaeWookQniApplication.answeredQuestionIdList.distinct().plus(questionAnswerDTO.questionId)
 
-                    Log.v("답안이 작성된 질문의 id : " , questionAnswerDTO.questionId.toString())
+                    Log.v("(선택될 때 아님) 답안이 작성된 질문의 id : " , questionAnswerDTO.questionId.toString())
                 }
             }
         }
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         setUpViewBinding()
         initRecyclerView()
 
-        activityMainBinding.nickname.text = "venom"
+        activityMainBinding.nickname.text = ImJaeWookQniApplication.nickname
 
         mainQuestionAdapter.setOnItemClickListener(object :
             MainQuestionAdapter.OnItemClickListener {

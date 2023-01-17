@@ -2,9 +2,11 @@ package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.AnswerDTO
 import com.example.imjaewook_qni.databinding.ActivityMainBinding
 import com.example.imjaewook_qni.databinding.ActivitySaveAnswerBinding
@@ -30,7 +32,7 @@ class AnswerSaveActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        answerViewModel.getUserQuestionList(3L)
+        answerViewModel.getUserQuestionList(ImJaeWookQniApplication.userId.toLong())
     }
 
     @SuppressLint("SetTextI18n")
@@ -41,8 +43,10 @@ class AnswerSaveActivity : AppCompatActivity() {
             val secondIntent = intent
             val chosenQuestionId = secondIntent.getIntExtra("ChosenQuestionId", 0)
 
+            Log.v("답변할 질문의 id : ", chosenQuestionId.toString())
+
             activitySaveAnswerBinding.idAndQuestion.text = question[chosenQuestionId].questionId.toString() + ". " + question[chosenQuestionId].question
-            activitySaveAnswerBinding.answerBox.setText("A. " + question[chosenQuestionId].answer)
+            activitySaveAnswerBinding.answerBox.setText(question[chosenQuestionId].answer)
         }
 
         answerViewModel.saveAnswerResponseLiveData.observe(this) { response ->
@@ -70,8 +74,8 @@ class AnswerSaveActivity : AppCompatActivity() {
         activitySaveAnswerBinding.answerSaveButton.setOnClickListener {
 
             val answer = activitySaveAnswerBinding.answerBox.text.toString()
-            val questionId = activitySaveAnswerBinding.idAndQuestion.text.subSequence(0, 1).toString().toLong()
-            val userId = 3L
+            val questionId = activitySaveAnswerBinding.idAndQuestion.text.subSequence(0, activitySaveAnswerBinding.idAndQuestion.text.indexOf(".")).toString().toLong()
+            val userId = ImJaeWookQniApplication.userId.toLong()
 
             val answerDTO = AnswerDTO(answer, questionId, userId)
 
