@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/activity_save_answer.xml" value="0.1828774062816616" />
-        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.2604166666666667" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.20284697508896798" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18055555555555555" />
         <entry key="app/src/main/res/layout/activity_update_answer.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/activity_wordcloud.xml" value="0.31465911865234375" />
@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/main_question_row.xml" value="0.33559782608695654" />
         <entry key="app/src/main/res/layout/setting_activity.xml" value="0.259375" />
         <entry key="app/src/main/res/layout/update_answer_dialog.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/update_nickname_dialog.xml" value="0.182370820668693" />
       </map>
     </option>
   </component>
