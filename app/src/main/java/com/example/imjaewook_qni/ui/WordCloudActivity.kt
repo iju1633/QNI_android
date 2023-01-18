@@ -20,6 +20,6 @@ class WordCloudActivity : AppCompatActivity() {
 
         image = findViewById(R.id.wordCloud)
 
-        image.load(baseURL + "I would choose love. I used to live in Philippines for education when I was young like 13. I love to sing love love love which is Roy kim's song.")
+        image.load(baseURL + "I would choose love love love instead of friend friend.")
     }
 }

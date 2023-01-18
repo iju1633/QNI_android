@@ -1,5 +1,6 @@
 package com.example.imjaewook_qni.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -27,7 +28,7 @@ class SettingActivity : AppCompatActivity() {
         activitySettingBinding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(activitySettingBinding.root)
 
-        activitySettingBinding.newName.text = ImJaeWookQniApplication.nickname
+        activitySettingBinding.newName.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
 
         setUpViewModel()
 
@@ -50,19 +51,44 @@ class SettingActivity : AppCompatActivity() {
                 .setIcon(R.drawable.logo)
                 .show()
         }
+
+        activitySettingBinding.withdrawBox.setOnClickListener {
+
+            val builder = AlertDialog.Builder(this)
+
+            val dialogView = layoutInflater.inflate(R.layout.withdraw_user_dialog, null)
+
+            builder.setView(dialogView)
+                .setPositiveButton("save") { dialogInterface, i ->
+
+                    withdrawUser()
+                }
+                .setNegativeButton("cancel") { dialogInterface, i ->
+
+                }
+                .setIcon(R.drawable.logo)
+                .show()
+        }
     }
 
     private fun changeNickname() {
         val nicknameDTO = NicknameDTO(
             activitySettingBinding.newName.text.toString(),
-            ImJaeWookQniApplication.userId
+            ImJaeWookQniApplication.prefs.getString("userId", "0")
         )
-        Log.v("전역변수에 저장된 변경 전 유저의 닉네임 : ", ImJaeWookQniApplication.nickname)
+        Log.v("전역변수에 저장된 변경 전 유저의 닉네임 : ", ImJaeWookQniApplication.prefs.getString("nickname", "null"))
 
         viewModel.changeNickname(nicknameDTO)
 
-        ImJaeWookQniApplication.nickname = activitySettingBinding.newName.text.toString()
-        Log.v("전역변수에 저장된 바뀐 새로운 유저의 닉네임 : ", ImJaeWookQniApplication.nickname)
+        ImJaeWookQniApplication.prefs.setString(activitySettingBinding.newName.text.toString(), "null")
+        Log.v("전역변수에 저장된 바뀐 새로운 유저의 닉네임 : ", ImJaeWookQniApplication.prefs.getString("nickname", "null"))
+    }
+
+    private fun withdrawUser() {
+        viewModel.withdrawalUser(ImJaeWookQniApplication.prefs.getString("userId", "0"))
+
+        val intent = Intent(this@SettingActivity, LoginTestActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setUpViewModel() {
@@ -79,6 +105,23 @@ class SettingActivity : AppCompatActivity() {
                 Toast.makeText(
                     this@SettingActivity,
                     "Failed to change nickname.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
+
+        viewModel.withdrawalUserObserver().observe(this, Observer<Void?> {
+
+            if (it == null) { // 반환값이 void 이니까 !
+                Toast.makeText(
+                    this@SettingActivity,
+                    "Successfully deleted user.",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@SettingActivity,
+                    "Failed to delete user.",
                     Toast.LENGTH_LONG
                 ).show()
             }

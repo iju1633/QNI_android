@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(this@RegisterActivity, "Register Success !!", Toast.LENGTH_SHORT)
                         .show()
 
-                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                    startActivity(Intent(this@RegisterActivity, LoginTestActivity::class.java))
                 } else
                     Toast.makeText(this@RegisterActivity, "Register Failed !!", Toast.LENGTH_SHORT)
                         .show()

@@ -12,12 +12,18 @@ import retrofit2.Response
 
 class SettingViewModel: ViewModel() {
     lateinit var changeNicknameLiveData: MutableLiveData<Void>
+    lateinit var withdrawUserLiveData: MutableLiveData<Void>
     init {
         changeNicknameLiveData = MutableLiveData()
+        withdrawUserLiveData = MutableLiveData()
     }
 
     fun changeNicknameObserver(): MutableLiveData<Void> {
         return changeNicknameLiveData
+    }
+
+    fun withdrawalUserObserver(): MutableLiveData<Void> {
+        return withdrawUserLiveData
     }
 
     fun changeNickname(nicknameDTO: NicknameDTO) {
@@ -38,4 +44,28 @@ class SettingViewModel: ViewModel() {
             }
         })
     }
+
+    fun withdrawalUser(userId: String) {
+        val retroService  = RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
+        val call = retroService.withdrawalUser(userId)
+        call.enqueue(object: Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                withdrawUserLiveData.postValue(null)
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if(response.isSuccessful) {
+
+                    ImJaeWookQniApplication.prefs.setString("userId", "0")
+                    ImJaeWookQniApplication.prefs.setString("nickname", "null")
+
+                    withdrawUserLiveData.postValue(response.body())
+                } else {
+                    withdrawUserLiveData.postValue(null)
+                }
+            }
+        })
+    }
+
+
 }

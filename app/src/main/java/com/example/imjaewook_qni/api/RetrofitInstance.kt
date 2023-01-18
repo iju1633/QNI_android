@@ -4,6 +4,8 @@ import com.example.imjaewook_qni.ui.repository.MainRepository
 import com.example.imjaewook_qni.ui.repository.MainRepositoryImpl
 import com.example.imjaewook_qni.ui.repository.UserRepository
 import com.example.imjaewook_qni.ui.repository.UserRepositoryImpl
+//import com.example.imjaewook_qni.ui.repository.UserRepository
+//import com.example.imjaewook_qni.ui.repository.UserRepositoryImpl
 import com.example.imjaewook_qni.util.Const
 import dagger.Module
 import dagger.Provides

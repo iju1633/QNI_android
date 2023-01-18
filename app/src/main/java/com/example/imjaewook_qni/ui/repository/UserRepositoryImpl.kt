@@ -12,8 +12,11 @@ class UserRepositoryImpl @Inject constructor(
     private val remoteSource: UserApiHelper
 ) : UserRepository {
 
-    override suspend fun userLogin(loginDTO: LoginDTO): Response<LoginResponseDTO> =
-        remoteSource.userLogin(loginDTO)
+//    override suspend fun userLogin(loginDTO: LoginDTO): Response<LoginResponseDTO> =
+//        remoteSource.userLogin(loginDTO)
+//
+//    override fun loginUser(loginDTO: LoginDTO): Call<LoginResponseDTO> =
+//        remoteSource.loginUser(loginDTO)
 
     override suspend fun userRegister(registerDTO: RegisterDTO): Response<Void> =
         remoteSource.userRegister(registerDTO)

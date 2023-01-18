@@ -1,5 +1,6 @@
 package com.example.imjaewook_qni.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.imjaewook_qni.ImJaeWookQniApplication
@@ -12,13 +13,19 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginUserViewModel: ViewModel() {
-    lateinit var createNewUserLiveData: MutableLiveData<LoginResponseDTO?>
+    lateinit var loginUserLiveData: MutableLiveData<LoginResponseDTO?>
+    lateinit var logoutUserLiveData: MutableLiveData<Void?>
     init {
-        createNewUserLiveData = MutableLiveData()
+        loginUserLiveData = MutableLiveData()
+        logoutUserLiveData = MutableLiveData()
     }
 
-    fun getCreateNewUserObserver(): MutableLiveData<LoginResponseDTO?> {
-        return createNewUserLiveData
+    fun loginUserObserver(): MutableLiveData<LoginResponseDTO?> {
+        return loginUserLiveData
+    }
+
+    fun logoutUserObserver(): MutableLiveData<Void?> {
+        return logoutUserLiveData
     }
 
     fun login(loginDTO: LoginDTO) {
@@ -26,18 +33,42 @@ class LoginUserViewModel: ViewModel() {
         val call = retroService.login(loginDTO)
         call.enqueue(object: Callback<LoginResponseDTO> {
             override fun onFailure(call: Call<LoginResponseDTO>, t: Throwable) {
-                createNewUserLiveData.postValue(null)
+                loginUserLiveData.postValue(null)
             }
 
             override fun onResponse(call: Call<LoginResponseDTO>, response: Response<LoginResponseDTO>) {
                 if(response.isSuccessful) {
 
-                    ImJaeWookQniApplication.userId = response.body()?.userId.toString()
-                    ImJaeWookQniApplication.nickname = response.body()?.nickname.toString()
+                    ImJaeWookQniApplication.prefs.setString("userId", response.body()?.userId.toString())
+                    ImJaeWookQniApplication.prefs.setString("nickname", response.body()?.nickname.toString())
 
-                    createNewUserLiveData.postValue(response.body())
+                    // log
+                    Log.v("로그인 시 저장되는 userId : ", ImJaeWookQniApplication.prefs.getString("userId", "0"))
+                    Log.v("로그인 시 저장되는 nickname : ", ImJaeWookQniApplication.prefs.getString("nickname", "null"))
+
+
+                    loginUserLiveData.postValue(response.body())
                 } else {
-                    createNewUserLiveData.postValue(null)
+                    loginUserLiveData.postValue(null)
+                }
+            }
+        })
+    }
+
+    fun logout() {
+        val retroService  = RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
+        val call = retroService.logout()
+        call.enqueue(object: Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                logoutUserLiveData.postValue(null)
+            }
+
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if(response.isSuccessful) {
+
+                    logoutUserLiveData.postValue(response.body())
+                } else {
+                    logoutUserLiveData.postValue(null)
                 }
             }
         })

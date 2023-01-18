@@ -36,7 +36,7 @@ class RegisterViewModel @Inject constructor(
 
             val handler = CoroutineExceptionHandler { _, throwable ->
                 setToastMessage("Error has been occurred while register.")
-                throwable.message?.let { Log.d("LoginViewModel.kt", it) }
+                throwable.message?.let { Log.d("LoginUserViewModel.kt", it) }
             }
 
             withContext(Dispatchers.IO + handler) {

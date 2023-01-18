@@ -4,10 +4,7 @@ import com.example.imjaewook_qni.api.dto.LoginDTO
 import com.example.imjaewook_qni.api.dto.LoginResponseDTO
 import com.example.imjaewook_qni.api.dto.NicknameDTO
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.PATCH
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetroServiceInterface {
 
@@ -15,7 +12,13 @@ interface RetroServiceInterface {
     @Headers("Accept:application/json", "Content-Type:application/json")
     fun login(@Body params: LoginDTO): Call<LoginResponseDTO>
 
+    @POST("/user/logout")
+    fun logout(): Call<Void>
+
     @PATCH("/setting/user/nickname")
     @Headers("Accept:application/json", "Content-Type:application/json")
     fun changeNickname(@Body params: NicknameDTO): Call<Void>
+
+    @DELETE("/setting/withdrawal/userId/{userId}")
+    fun withdrawalUser(@Path(value = "userId", encoded = true) userId: String): Call<Void>
 }

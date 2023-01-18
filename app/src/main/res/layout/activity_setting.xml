@@ -115,7 +115,7 @@
                     android:textSize="22sp" />
 
                 <LinearLayout
-                    android:id="@+id/withdraw"
+                    android:id="@+id/withdrawBox"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="10dp"

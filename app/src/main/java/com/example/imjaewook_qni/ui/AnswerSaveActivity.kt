@@ -32,7 +32,7 @@ class AnswerSaveActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        answerViewModel.getUserQuestionList(ImJaeWookQniApplication.userId.toLong())
+        answerViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
     }
 
     @SuppressLint("SetTextI18n")
@@ -75,7 +75,7 @@ class AnswerSaveActivity : AppCompatActivity() {
 
             val answer = activitySaveAnswerBinding.answerBox.text.toString()
             val questionId = activitySaveAnswerBinding.idAndQuestion.text.subSequence(0, activitySaveAnswerBinding.idAndQuestion.text.indexOf(".")).toString().toLong()
-            val userId = ImJaeWookQniApplication.userId.toLong()
+            val userId = ImJaeWookQniApplication.prefs.getString("userId", "0").toLong()
 
             val answerDTO = AnswerDTO(answer, questionId, userId)
 

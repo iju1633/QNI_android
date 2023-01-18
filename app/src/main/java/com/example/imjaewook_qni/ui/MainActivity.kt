@@ -48,20 +48,21 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        activityMainBinding.logout.setOnClickListener {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun onStart() {
         super.onStart()
 
-        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.userId.toLong())
-        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.userId.toLong())
+        // test
+        Log.v("답변된 질문, 모든 질문 가져올 때 사용할 userId : ", ImJaeWookQniApplication.prefs.getString("userId", "0"))
+
+        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+
     }
 
     private fun setUpViewModel() {
+
         mainViewModel.questionAnswerDTOLiveData.observe(this) { questionResponse ->
 
             activityMainBinding.apply {
@@ -69,11 +70,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             // 답변이 완료된 문제의 경우, 해당 문제의 id를 전역변수로 선언한 배열에 저장
-            for(questionAnswerDTO : QuestionAnswerDTO in questionResponse) {
-                if(questionAnswerDTO.answer.isNotEmpty()) {
-                    ImJaeWookQniApplication.answeredQuestionIdList.distinct().plus(questionAnswerDTO.questionId)
+            for (questionAnswerDTO: QuestionAnswerDTO in questionResponse) {
+                if (questionAnswerDTO.answer.isNotEmpty()) {
+                    ImJaeWookQniApplication.answeredQuestionIdList.distinct()
+                        .plus(questionAnswerDTO.questionId)
 
-                    Log.v("(선택될 때 아님) 답안이 작성된 질문의 id : " , questionAnswerDTO.questionId.toString())
+                    Log.v("(선택될 때 아님) 답안이 작성된 질문의 id : ", questionAnswerDTO.questionId.toString())
                 }
             }
         }
@@ -90,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         setUpViewBinding()
         initRecyclerView()
 
-        activityMainBinding.nickname.text = ImJaeWookQniApplication.nickname
+        activityMainBinding.nickname.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
 
         mainQuestionAdapter.setOnItemClickListener(object :
             MainQuestionAdapter.OnItemClickListener {

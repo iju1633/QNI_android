@@ -36,7 +36,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        answerViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.userId.toLong())
+        answerViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
     }
 
     @SuppressLint("SetTextI18n")
@@ -100,7 +100,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
 
             activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
 
-                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), activityUpdateAnswerBinding.question.text.substring(0, activityUpdateAnswerBinding.question.text.indexOf(".")), ImJaeWookQniApplication.userId.toLong())
+                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), activityUpdateAnswerBinding.question.text.substring(0, activityUpdateAnswerBinding.question.text.indexOf(".")), ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
                 answerViewModel.updateAnswer(answerUpdateDTO)
             }
         }

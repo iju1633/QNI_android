@@ -8,6 +8,7 @@ import retrofit2.Response
 
 interface UserRepository {
 
-    suspend fun userLogin(loginDTO: LoginDTO) : Response<LoginResponseDTO>
+//    suspend fun userLogin(loginDTO: LoginDTO) : Response<LoginResponseDTO>
+//    fun loginUser(loginDTO: LoginDTO) : Call<LoginResponseDTO>
     suspend fun userRegister(registerDTO: RegisterDTO) : Response<Void>
 }
