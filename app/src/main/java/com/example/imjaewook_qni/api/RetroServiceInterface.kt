@@ -1,5 +1,6 @@
 package com.example.imjaewook_qni.api
 
+import com.example.imjaewook_qni.api.dto.CombinedAnswerDTO
 import com.example.imjaewook_qni.api.dto.LoginDTO
 import com.example.imjaewook_qni.api.dto.LoginResponseDTO
 import com.example.imjaewook_qni.api.dto.NicknameDTO
@@ -21,4 +22,7 @@ interface RetroServiceInterface {
 
     @DELETE("/setting/withdrawal/userId/{userId}")
     fun withdrawalUser(@Path(value = "userId", encoded = true) userId: String): Call<Void>
+
+    @GET("/wordCloud/userId/{userId}")
+    fun getCombinedAnswer(@Path(value = "userId", encoded = true) userId: String): Call<CombinedAnswerDTO>
 }
