@@ -4,8 +4,11 @@ import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.AnsweredQuestionDTO
@@ -15,6 +18,7 @@ import com.example.imjaewook_qni.databinding.ActivitySaveAnswerBinding
 import com.example.imjaewook_qni.databinding.ActivityUpdateAnswerBinding
 import com.example.imjaewook_qni.ui.adapter.MainAnsweredQuestionAdapter
 import com.example.imjaewook_qni.ui.adapter.MainQuestionAdapter
+import com.example.imjaewook_qni.ui.viewmodel.LoginUserViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activityUpdateAnswerBinding: ActivityUpdateAnswerBinding
 
     private val mainViewModel: MainViewModel by viewModels()
+    lateinit var viewModel: LoginUserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +91,18 @@ class MainActivity : AppCompatActivity() {
                 mainAnsweredQuestionAdapter.itemList = answeredQuestionResponse
             }
         }
+
+        viewModel = ViewModelProvider(this).get(LoginUserViewModel::class.java)
+        viewModel.logoutUserObserver().observe(this) {
+
+            if (it == null) {
+                Toast.makeText(this@MainActivity, "Successfully logout !!", Toast.LENGTH_LONG).show()
+            } else {
+
+                Toast.makeText(this@MainActivity, "Failed to logout !!", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
     }
 
     private fun setUpUI() {
@@ -93,6 +110,8 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
 
         activityMainBinding.nickname.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
+        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
 
         mainQuestionAdapter.setOnItemClickListener(object :
             MainQuestionAdapter.OnItemClickListener {
@@ -115,6 +134,24 @@ class MainActivity : AppCompatActivity() {
                 startActivity(nextIntent)
             }
         })
+
+        activityMainBinding.logout.setOnClickListener {
+
+            logout()
+        }
+    }
+
+    private fun logout() {
+
+        ImJaeWookQniApplication.prefs.setString("userId", "0")
+        ImJaeWookQniApplication.prefs.setString("nickname", "null")
+
+        viewModel.logout()
+
+        finish()
+
+        val nextIntent = Intent(this@MainActivity, LoginTestActivity::class.java)
+        startActivity(nextIntent)
     }
 
     private fun initRecyclerView() {

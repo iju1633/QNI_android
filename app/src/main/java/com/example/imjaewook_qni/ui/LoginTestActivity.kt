@@ -22,6 +22,7 @@ class LoginTestActivity : AppCompatActivity() {
 
     private lateinit var activityLoginBinding : ActivityLoginBinding
     lateinit var viewModel: LoginUserViewModel
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,9 @@ class LoginTestActivity : AppCompatActivity() {
             }
 
             login()
+
+            mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+            mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
         }
 
         activityLoginBinding.textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
