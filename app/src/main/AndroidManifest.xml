@@ -30,6 +30,7 @@
         <activity android:name=".ui.AnswerSaveActivity"/>
         <activity android:name=".ui.AnswerUpdateActivity"/>
         <activity android:name=".ui.LoginTestActivity"/>
+        <activity android:name=".ui.LoadingActivity"/>
 
         <activity android:name=".ui.SplashActivity"
             android:exported="true">

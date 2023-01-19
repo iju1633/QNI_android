@@ -29,28 +29,30 @@ class LoginTestActivity : AppCompatActivity() {
         activityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(activityLoginBinding.root)
 
-        setUpViewModel()
+        //setUpViewModel()
         activityLoginBinding.buttonLogin.setOnClickListener {
 
             val uid = activityLoginBinding.editTextUid.text.toString()
             val pwd = activityLoginBinding.editTextPassword.text.toString()
+//
+//            if (uid.isEmpty()) {
+//                activityLoginBinding.editTextUid.error = "User Id required"
+//                activityLoginBinding.editTextUid.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            if (pwd.isEmpty()) {
+//                activityLoginBinding.editTextPassword.error = "Password required"
+//                activityLoginBinding.editTextPassword.requestFocus()
+//                return@setOnClickListener
+//            }
 
-            if (uid.isEmpty()) {
-                activityLoginBinding.editTextUid.error = "User Id required"
-                activityLoginBinding.editTextUid.requestFocus()
-                return@setOnClickListener
-            }
+            val intent = Intent(this, LoadingActivity::class.java)
+            intent.putExtra("uid", uid)
+            intent.putExtra("pwd", pwd)
+            startActivity(intent)
 
-            if (pwd.isEmpty()) {
-                activityLoginBinding.editTextPassword.error = "Password required"
-                activityLoginBinding.editTextPassword.requestFocus()
-                return@setOnClickListener
-            }
-
-            login()
-
-            mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
-            mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+            //login()
         }
 
         activityLoginBinding.textViewRegister.paintFlags = Paint.UNDERLINE_TEXT_FLAG
