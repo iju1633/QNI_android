@@ -27,7 +27,8 @@ class SettingActivity : AppCompatActivity() {
         activitySettingBinding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(activitySettingBinding.root)
 
-        activitySettingBinding.newName.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
+        activitySettingBinding.newName.text =
+            ImJaeWookQniApplication.prefs.getString("nickname", "null")
 
         setUpViewModel()
 
@@ -43,6 +44,7 @@ class SettingActivity : AppCompatActivity() {
                     activitySettingBinding.newName.text = dialogText.text.toString()
 
                     changeNickname()
+                    ImJaeWookQniApplication.prefs.setString("nickname", activitySettingBinding.newName.text.toString())
                 }
                 .setNegativeButton("cancel") { dialogInterface, i ->
 
@@ -75,12 +77,21 @@ class SettingActivity : AppCompatActivity() {
             activitySettingBinding.newName.text.toString(),
             ImJaeWookQniApplication.prefs.getString("userId", "0")
         )
-        Log.v("전역변수에 저장된 변경 전 유저의 닉네임 : ", ImJaeWookQniApplication.prefs.getString("nickname", "null"))
+        Log.v(
+            "전역변수에 저장된 변경 전 유저의 닉네임 : ",
+            ImJaeWookQniApplication.prefs.getString("nickname", "null")
+        )
 
         viewModel.changeNickname(nicknameDTO)
 
-        ImJaeWookQniApplication.prefs.setString(activitySettingBinding.newName.text.toString(), "null")
-        Log.v("전역변수에 저장된 바뀐 새로운 유저의 닉네임 : ", ImJaeWookQniApplication.prefs.getString("nickname", "null"))
+        ImJaeWookQniApplication.prefs.setString(
+            activitySettingBinding.newName.text.toString(),
+            "null"
+        )
+        Log.v(
+            "전역변수에 저장된 바뀐 새로운 유저의 닉네임 : ",
+            ImJaeWookQniApplication.prefs.getString("nickname", "null")
+        )
     }
 
     private fun withdrawUser() {

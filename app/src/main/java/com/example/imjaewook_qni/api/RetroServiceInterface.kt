@@ -24,5 +24,10 @@ interface RetroServiceInterface {
     fun withdrawalUser(@Path(value = "userId", encoded = true) userId: String): Call<Void>
 
     @GET("/wordCloud/userId/{userId}")
-    fun getCombinedAnswer(@Path(value = "userId", encoded = true) userId: String): Call<CombinedAnswerDTO>
+    fun getCombinedAnswer(
+        @Path(
+            value = "userId",
+            encoded = true
+        ) userId: String
+    ): Call<CombinedAnswerDTO>
 }

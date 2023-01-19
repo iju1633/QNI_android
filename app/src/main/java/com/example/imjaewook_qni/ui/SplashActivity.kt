@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.imjaewook_qni.R
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {

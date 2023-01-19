@@ -11,17 +11,17 @@ interface MainApiService {
 
     @GET("/question/list/userId/{userId}")
     suspend fun getUserQuestions(
-        @Path(value = "userId", encoded = true) userId : String
-    ) : Response<List<QuestionAnswerDTO>>
+        @Path(value = "userId", encoded = true) userId: String
+    ): Response<List<QuestionAnswerDTO>>
 
     @GET("/question/answered/list/userId/{userId}")
     suspend fun getUserAnsweredQuestions(
-        @Path(value = "userId", encoded = true) userId : String
-    ) : Response<List<AnsweredQuestionDTO>>
+        @Path(value = "userId", encoded = true) userId: String
+    ): Response<List<AnsweredQuestionDTO>>
 
     @POST("/answer/confirm")
-    suspend fun saveAnswer(@Body answerDTO: AnswerDTO) : Response<Void>
+    suspend fun saveAnswer(@Body answerDTO: AnswerDTO): Response<Void>
 
     @PATCH("/answer/update")
-    suspend fun updateAnswer(@Body answerUpdateDTO: AnswerUpdateDTO) : Response<Void>
+    suspend fun updateAnswer(@Body answerUpdateDTO: AnswerUpdateDTO): Response<Void>
 }

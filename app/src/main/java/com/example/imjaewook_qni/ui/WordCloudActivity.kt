@@ -1,7 +1,6 @@
 package com.example.imjaewook_qni.ui
 
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider

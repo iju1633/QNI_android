@@ -58,11 +58,27 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         // test
-        Log.v("답변된 질문, 모든 질문 가져올 때 사용할 userId : ", ImJaeWookQniApplication.prefs.getString("userId", "0"))
+        Log.v(
+            "답변된 질문, 모든 질문 가져올 때 사용할 userId : ",
+            ImJaeWookQniApplication.prefs.getString("userId", "0")
+        )
 
-        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
-        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        mainViewModel.getAnsweredUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString(
+                "userId",
+                "0"
+            ).toLong()
+        )
+        mainViewModel.getUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString("userId", "0").toLong()
+        )
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        activityMainBinding.nickname.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
     }
 
     private fun setUpViewModel() {
@@ -95,7 +111,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.logoutUserObserver().observe(this) {
 
             if (it == null) {
-                Toast.makeText(this@MainActivity, "Successfully logout !!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Successfully logout !!", Toast.LENGTH_LONG)
+                    .show()
             } else {
 
                 Toast.makeText(this@MainActivity, "Failed to logout !!", Toast.LENGTH_LONG)
@@ -108,9 +125,17 @@ class MainActivity : AppCompatActivity() {
         setUpViewBinding()
         initRecyclerView()
 
-        activityMainBinding.nickname.text = ImJaeWookQniApplication.prefs.getString("nickname", "null")
-        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
-        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        activityMainBinding.nickname.text =
+            ImJaeWookQniApplication.prefs.getString("nickname", "null")
+        mainViewModel.getAnsweredUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString(
+                "userId",
+                "0"
+            ).toLong()
+        )
+        mainViewModel.getUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString("userId", "0").toLong()
+        )
 
         mainQuestionAdapter.setOnItemClickListener(object :
             MainQuestionAdapter.OnItemClickListener {

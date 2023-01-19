@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class CombinedAnswerDTO(
 
     @SerializedName("combinedAnswer")
-    val combinedAnswer : String
+    val combinedAnswer: String
 )

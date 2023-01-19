@@ -19,8 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginLoadingActivity : AppCompatActivity() {
 
-    private lateinit var activityLoginBinding : ActivityLoginBinding
-    private lateinit var activitySplashActivity : ActivitySplashBinding
+    private lateinit var activityLoginBinding: ActivityLoginBinding
+    private lateinit var activitySplashActivity: ActivitySplashBinding
     lateinit var viewModel: LoginViewModel
     private val mainViewModel: MainViewModel by viewModels()
 
@@ -51,18 +51,30 @@ class LoginLoadingActivity : AppCompatActivity() {
         viewModel.loginUserObserver().observe(this) {
 
             if (it == null) {
-                Toast.makeText(this@LoginLoadingActivity, "Failed to login", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginLoadingActivity, "Failed to login", Toast.LENGTH_LONG)
+                    .show()
             } else {
                 ImJaeWookQniApplication.prefs.setString("userId", it.userId.toString())
                 ImJaeWookQniApplication.prefs.setString("nickname", it.nickname.toString())
 
-                Toast.makeText(this@LoginLoadingActivity, "Successfully Login !!", Toast.LENGTH_LONG)
+                Toast.makeText(
+                    this@LoginLoadingActivity,
+                    "Successfully Login !!",
+                    Toast.LENGTH_LONG
+                )
                     .show()
             }
         }
 
-        mainViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
-        mainViewModel.getUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        mainViewModel.getAnsweredUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString(
+                "userId",
+                "0"
+            ).toLong()
+        )
+        mainViewModel.getUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString("userId", "0").toLong()
+        )
     }
 
     private fun login() {

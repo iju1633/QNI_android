@@ -29,7 +29,7 @@ object RetrofitInstance {
 
     @Provides
     @Singleton
-    fun provideUserApiService(retrofit: Retrofit) : UserApiService =
+    fun provideUserApiService(retrofit: Retrofit): UserApiService =
         retrofit.create(UserApiService::class.java)
 
     @Provides
@@ -39,7 +39,7 @@ object RetrofitInstance {
 
     @Provides
     @Singleton
-    fun provideUserRepository(userRepository : UserRepositoryImpl): UserRepository =
+    fun provideUserRepository(userRepository: UserRepositoryImpl): UserRepository =
         userRepository
 
 

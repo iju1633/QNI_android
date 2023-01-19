@@ -24,8 +24,8 @@
         android:layout_marginTop="12dp"
         android:clipChildren="false"
         android:elevation="5dp"
-        android:paddingRight="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/questionId"
@@ -51,9 +51,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="A. "
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/qnifont"
+                android:text="A. "
                 android:textSize="16sp" />
 
             <TextView
@@ -65,7 +65,6 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>

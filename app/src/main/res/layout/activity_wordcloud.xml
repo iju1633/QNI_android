@@ -24,10 +24,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:fontFamily="@font/qnifont"
-                android:textColor="@color/colorPrimaryDark"
                 android:paddingVertical="20dp"
                 android:paddingBottom="25dp"
                 android:text="My Word Cloud"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="30sp" />
 
         </LinearLayout>

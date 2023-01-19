@@ -10,6 +10,6 @@ interface MainApiHelper {
 
     suspend fun getQuestionList(userId: String): Response<List<QuestionAnswerDTO>>
     suspend fun getAnsweredQuestionList(userId: String): Response<List<AnsweredQuestionDTO>>
-    suspend fun saveAnswer(answerDTO : AnswerDTO) : Response<Void>
-    suspend fun updateAnswer(answerUpdateDTO: AnswerUpdateDTO) : Response<Void>
+    suspend fun saveAnswer(answerDTO: AnswerDTO): Response<Void>
+    suspend fun updateAnswer(answerUpdateDTO: AnswerUpdateDTO): Response<Void>
 }

@@ -8,10 +8,10 @@
         android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/qnifont"
         android:text="Change Nickname"
         android:textAlignment="center"
@@ -20,9 +20,9 @@
 
     <ImageView
         android:layout_width="80dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:background="@drawable/setting_nickname_icon"/>
+        android:layout_gravity="center"
+        android:background="@drawable/setting_nickname_icon" />
 
     <EditText
         android:id="@+id/newNickname"
@@ -30,9 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:textAlignment="center"
         android:ems="10"
         android:fontFamily="@font/qnifont"
         android:hint="Write your new nickname here."
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
 </LinearLayout>

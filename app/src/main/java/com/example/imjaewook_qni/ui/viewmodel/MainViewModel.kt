@@ -21,11 +21,14 @@ class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    private val _questionAnswerDTOLiveData: MutableLiveData<List<QuestionAnswerDTO>> = MutableLiveData()
+    private val _questionAnswerDTOLiveData: MutableLiveData<List<QuestionAnswerDTO>> =
+        MutableLiveData()
     val questionAnswerDTOLiveData: LiveData<List<QuestionAnswerDTO>> = _questionAnswerDTOLiveData
 
-    private val _answeredQuestionDTOLiveData: MutableLiveData<List<AnsweredQuestionDTO>> = MutableLiveData()
-    val answeredQuestionDTOLiveData: LiveData<List<AnsweredQuestionDTO>> = _answeredQuestionDTOLiveData
+    private val _answeredQuestionDTOLiveData: MutableLiveData<List<AnsweredQuestionDTO>> =
+        MutableLiveData()
+    val answeredQuestionDTOLiveData: LiveData<List<AnsweredQuestionDTO>> =
+        _answeredQuestionDTOLiveData
 
     private val _showErrorToast = MutableLiveData<Event<String>>()
     val showErrorToast: LiveData<Event<String>> = _showErrorToast

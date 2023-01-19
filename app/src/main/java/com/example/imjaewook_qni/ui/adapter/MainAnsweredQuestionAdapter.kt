@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.imjaewook_qni.api.dto.AnsweredQuestionDTO
 import com.example.imjaewook_qni.databinding.MainAnsweredQuestionRowBinding
 
-class MainAnsweredQuestionAdapter(items: List<AnsweredQuestionDTO>) : RecyclerView.Adapter<MainAnsweredQuestionAdapter.MainViewHolder>() {
+class MainAnsweredQuestionAdapter(items: List<AnsweredQuestionDTO>) :
+    RecyclerView.Adapter<MainAnsweredQuestionAdapter.MainViewHolder>() {
 
     private val items: List<AnsweredQuestionDTO>
     private lateinit var mListener: OnItemClickListener
@@ -46,11 +47,17 @@ class MainAnsweredQuestionAdapter(items: List<AnsweredQuestionDTO>) : RecyclerVi
 
     private val diffCallback =
         object : DiffUtil.ItemCallback<AnsweredQuestionDTO>() { // code to optimize the recyclerview
-            override fun areItemsTheSame(oldItem: AnsweredQuestionDTO, newItem: AnsweredQuestionDTO): Boolean {
+            override fun areItemsTheSame(
+                oldItem: AnsweredQuestionDTO,
+                newItem: AnsweredQuestionDTO
+            ): Boolean {
                 return oldItem.questionId == newItem.questionId
             }
 
-            override fun areContentsTheSame(oldItem: AnsweredQuestionDTO, newItem: AnsweredQuestionDTO): Boolean {
+            override fun areContentsTheSame(
+                oldItem: AnsweredQuestionDTO,
+                newItem: AnsweredQuestionDTO
+            ): Boolean {
                 return oldItem == newItem
             }
         }
