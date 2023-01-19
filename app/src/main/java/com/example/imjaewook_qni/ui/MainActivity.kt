@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.wordCloudButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, WordCloudActivity::class.java)
+            val intent = Intent(this@MainActivity, WordCloudLoadingActivity::class.java)
             startActivity(intent)
         }
 

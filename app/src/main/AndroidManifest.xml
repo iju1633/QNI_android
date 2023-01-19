@@ -31,6 +31,7 @@
         <activity android:name=".ui.AnswerUpdateActivity"/>
         <activity android:name=".ui.LoginActivity"/>
         <activity android:name=".ui.LoginLoadingActivity"/>
+        <activity android:name=".ui.WordCloudLoadingActivity"/>
 
         <activity android:name=".ui.SplashActivity"
             android:exported="true">

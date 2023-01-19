@@ -14,6 +14,7 @@ import com.example.imjaewook_qni.databinding.ActivityLoginBinding
 import com.example.imjaewook_qni.databinding.ActivitySplashBinding
 import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
+import com.example.imjaewook_qni.util.Const
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +44,7 @@ class LoginLoadingActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
-        }, DURATION)
+        }, Const.LOADING_DURATION)
     }
 
     private fun setUpViewModel() {
@@ -83,9 +84,5 @@ class LoginLoadingActivity : AppCompatActivity() {
 
         val loginDTO = LoginDTO(uid, pwd)
         viewModel.login(loginDTO)
-    }
-
-    companion object { // 2초 간 보여짐
-        private const val DURATION: Long = 2000
     }
 }
