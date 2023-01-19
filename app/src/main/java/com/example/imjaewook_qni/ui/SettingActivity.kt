@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.R
 import com.example.imjaewook_qni.api.dto.NicknameDTO
-import com.example.imjaewook_qni.databinding.ActivityLoginBinding
 import com.example.imjaewook_qni.databinding.ActivitySettingBinding
 import com.example.imjaewook_qni.ui.viewmodel.SettingViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -87,7 +86,7 @@ class SettingActivity : AppCompatActivity() {
     private fun withdrawUser() {
         viewModel.withdrawalUser(ImJaeWookQniApplication.prefs.getString("userId", "0"))
 
-        val intent = Intent(this@SettingActivity, LoginTestActivity::class.java)
+        val intent = Intent(this@SettingActivity, LoginActivity::class.java)
         startActivity(intent)
     }
 

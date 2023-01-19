@@ -12,16 +12,16 @@ import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.LoginDTO
 import com.example.imjaewook_qni.databinding.ActivityLoginBinding
 import com.example.imjaewook_qni.databinding.ActivitySplashBinding
-import com.example.imjaewook_qni.ui.viewmodel.LoginUserViewModel
+import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoadingActivity : AppCompatActivity() {
+class LoginLoadingActivity : AppCompatActivity() {
 
     private lateinit var activityLoginBinding : ActivityLoginBinding
     private lateinit var activitySplashActivity : ActivitySplashBinding
-    lateinit var viewModel: LoginUserViewModel
+    lateinit var viewModel: LoginViewModel
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,16 +47,16 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun setUpViewModel() {
-        viewModel = ViewModelProvider(this).get(LoginUserViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.loginUserObserver().observe(this) {
 
             if (it == null) {
-                Toast.makeText(this@LoadingActivity, "Failed to login", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginLoadingActivity, "Failed to login", Toast.LENGTH_LONG).show()
             } else {
                 ImJaeWookQniApplication.prefs.setString("userId", it.userId.toString())
                 ImJaeWookQniApplication.prefs.setString("nickname", it.nickname.toString())
 
-                Toast.makeText(this@LoadingActivity, "Successfully Login !!", Toast.LENGTH_LONG)
+                Toast.makeText(this@LoginLoadingActivity, "Successfully Login !!", Toast.LENGTH_LONG)
                     .show()
             }
         }

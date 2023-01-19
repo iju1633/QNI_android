@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -18,7 +17,7 @@ import com.example.imjaewook_qni.databinding.ActivitySaveAnswerBinding
 import com.example.imjaewook_qni.databinding.ActivityUpdateAnswerBinding
 import com.example.imjaewook_qni.ui.adapter.MainAnsweredQuestionAdapter
 import com.example.imjaewook_qni.ui.adapter.MainQuestionAdapter
-import com.example.imjaewook_qni.ui.viewmodel.LoginUserViewModel
+import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activityUpdateAnswerBinding: ActivityUpdateAnswerBinding
 
     private val mainViewModel: MainViewModel by viewModels()
-    lateinit var viewModel: LoginUserViewModel
+    lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        viewModel = ViewModelProvider(this).get(LoginUserViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.logoutUserObserver().observe(this) {
 
             if (it == null) {
@@ -150,7 +149,7 @@ class MainActivity : AppCompatActivity() {
 
         finish()
 
-        val nextIntent = Intent(this@MainActivity, LoginTestActivity::class.java)
+        val nextIntent = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(nextIntent)
     }
 

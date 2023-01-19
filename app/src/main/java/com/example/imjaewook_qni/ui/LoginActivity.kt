@@ -3,25 +3,21 @@ package com.example.imjaewook_qni.ui
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.dto.LoginDTO
-import com.example.imjaewook_qni.api.dto.LoginResponseDTO
 import com.example.imjaewook_qni.databinding.ActivityLoginBinding
-import com.example.imjaewook_qni.ui.viewmodel.LoginUserViewModel
+import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginTestActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var activityLoginBinding : ActivityLoginBinding
-    lateinit var viewModel: LoginUserViewModel
+    lateinit var viewModel: LoginViewModel
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +43,7 @@ class LoginTestActivity : AppCompatActivity() {
 //                return@setOnClickListener
 //            }
 
-            val intent = Intent(this, LoadingActivity::class.java)
+            val intent = Intent(this, LoginLoadingActivity::class.java)
             intent.putExtra("uid", uid)
             intent.putExtra("pwd", pwd)
             startActivity(intent)
@@ -59,7 +55,7 @@ class LoginTestActivity : AppCompatActivity() {
 
         activityLoginBinding.textViewRegister.setOnClickListener {
 
-            val intent = Intent(this@LoginTestActivity, RegisterActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
@@ -71,19 +67,19 @@ class LoginTestActivity : AppCompatActivity() {
         val loginDTO = LoginDTO(uid, pwd)
         viewModel.login(loginDTO)
 
-        val intent = Intent(this@LoginTestActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
     }
 
     private fun setUpViewModel() {
-        viewModel = ViewModelProvider(this).get(LoginUserViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.loginUserObserver().observe(this) {
 
             if (it == null) {
-                Toast.makeText(this@LoginTestActivity, "Failed to login", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Failed to login", Toast.LENGTH_LONG).show()
             } else {
 
-                Toast.makeText(this@LoginTestActivity, "Successfully Login !!", Toast.LENGTH_LONG)
+                Toast.makeText(this@LoginActivity, "Successfully Login !!", Toast.LENGTH_LONG)
                     .show()
             }
         }

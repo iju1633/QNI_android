@@ -1,7 +1,6 @@
 package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
-import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -20,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginTestActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()

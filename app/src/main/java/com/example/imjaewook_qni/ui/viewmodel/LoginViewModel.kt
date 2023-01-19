@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginUserViewModel: ViewModel() {
+class LoginViewModel: ViewModel() {
     lateinit var loginUserLiveData: MutableLiveData<LoginResponseDTO?>
     lateinit var logoutUserLiveData: MutableLiveData<Void?>
     init {
