@@ -66,7 +66,7 @@ class LoginLoadingActivity : AppCompatActivity() {
                 Toast.makeText(
                     this@LoginLoadingActivity,
                     "Successfully Login !!",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 )
                     .show()
             }

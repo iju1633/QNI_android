@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                 } else
-                    Toast.makeText(this@RegisterActivity, "Register Failed !!", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@RegisterActivity, "Nickname or uid has been already taken !!", Toast.LENGTH_LONG)
                         .show()
             }
         }

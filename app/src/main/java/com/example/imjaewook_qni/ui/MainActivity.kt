@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.logoutUserObserver().observe(this) {
 
             if (it == null) {
-                Toast.makeText(this@MainActivity, "Successfully logout !!", Toast.LENGTH_LONG)
+                Toast.makeText(this@MainActivity, "Successfully logout !!", Toast.LENGTH_SHORT)
                     .show()
             } else {
 
