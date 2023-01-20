@@ -16,6 +16,7 @@ import com.example.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.example.imjaewook_qni.ui.viewmodel.MainViewModel
 import com.example.imjaewook_qni.util.Const
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class LoginLoadingActivity : AppCompatActivity() {
@@ -35,7 +36,6 @@ class LoginLoadingActivity : AppCompatActivity() {
 
         setUpViewModel()
         login()
-        startLoading()
     }
 
     private fun startLoading() {
@@ -52,11 +52,16 @@ class LoginLoadingActivity : AppCompatActivity() {
         viewModel.loginUserObserver().observe(this) {
 
             if (it == null) {
+
                 Toast.makeText(this@LoginLoadingActivity, "Failed to login", Toast.LENGTH_LONG)
                     .show()
+
+                finish()
             } else {
                 ImJaeWookQniApplication.prefs.setString("userId", it.userId.toString())
                 ImJaeWookQniApplication.prefs.setString("nickname", it.nickname.toString())
+
+                startLoading()
 
                 Toast.makeText(
                     this@LoginLoadingActivity,
