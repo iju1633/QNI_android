@@ -1,9 +1,6 @@
 package com.example.imjaewook_qni.api
 
-import com.example.imjaewook_qni.api.dto.CombinedAnswerDTO
-import com.example.imjaewook_qni.api.dto.LoginDTO
-import com.example.imjaewook_qni.api.dto.LoginResponseDTO
-import com.example.imjaewook_qni.api.dto.NicknameDTO
+import com.example.imjaewook_qni.api.dto.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -18,7 +15,7 @@ interface RetroServiceInterface {
 
     @PATCH("/setting/user/nickname")
     @Headers("Accept:application/json", "Content-Type:application/json")
-    fun changeNickname(@Body params: NicknameDTO): Call<Void>
+    fun changeNickname(@Body params: NicknameDTO): Call<NicknameResponseDTO>
 
     @DELETE("/setting/withdrawal/userId/{userId}")
     fun withdrawalUser(@Path(value = "userId", encoded = true) userId: String): Call<Void>

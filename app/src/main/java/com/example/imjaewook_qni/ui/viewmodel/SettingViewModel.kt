@@ -6,19 +6,21 @@ import com.example.imjaewook_qni.ImJaeWookQniApplication
 import com.example.imjaewook_qni.api.RetroInstance
 import com.example.imjaewook_qni.api.RetroServiceInterface
 import com.example.imjaewook_qni.api.dto.NicknameDTO
+import com.example.imjaewook_qni.api.dto.NicknameResponseDTO
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SettingViewModel: ViewModel() {
-    lateinit var changeNicknameLiveData: MutableLiveData<Void>
+class SettingViewModel : ViewModel() {
+    lateinit var changeNicknameLiveData: MutableLiveData<NicknameResponseDTO>
     lateinit var withdrawUserLiveData: MutableLiveData<Void>
+
     init {
         changeNicknameLiveData = MutableLiveData()
         withdrawUserLiveData = MutableLiveData()
     }
 
-    fun changeNicknameObserver(): MutableLiveData<Void> {
+    fun changeNicknameObserver(): MutableLiveData<NicknameResponseDTO> {
         return changeNicknameLiveData
     }
 
@@ -27,16 +29,23 @@ class SettingViewModel: ViewModel() {
     }
 
     fun changeNickname(nicknameDTO: NicknameDTO) {
-        val retroService  = RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
+        val retroService =
+            RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
         val call = retroService.changeNickname(nicknameDTO)
-        call.enqueue(object: Callback<Void> {
-            override fun onFailure(call: Call<Void>, t: Throwable) {
+        call.enqueue(object : Callback<NicknameResponseDTO> {
+            override fun onFailure(call: Call<NicknameResponseDTO>, t: Throwable) {
                 changeNicknameLiveData.postValue(null)
             }
 
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
-
+            override fun onResponse(
+                call: Call<NicknameResponseDTO>,
+                response: Response<NicknameResponseDTO>
+            ) {
+                if (response.isSuccessful) {
+                    ImJaeWookQniApplication.prefs.setString(
+                        "nickname",
+                        response.body()?.newNickname.toString()
+                    )
                     changeNicknameLiveData.postValue(response.body())
                 } else {
                     changeNicknameLiveData.postValue(null)
@@ -46,15 +55,16 @@ class SettingViewModel: ViewModel() {
     }
 
     fun withdrawalUser(userId: String) {
-        val retroService  = RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
+        val retroService =
+            RetroInstance.getRetroInstance().create(RetroServiceInterface::class.java)
         val call = retroService.withdrawalUser(userId)
-        call.enqueue(object: Callback<Void> {
+        call.enqueue(object : Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 withdrawUserLiveData.postValue(null)
             }
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
 
                     ImJaeWookQniApplication.prefs.setString("userId", "0")
                     ImJaeWookQniApplication.prefs.setString("nickname", "null")
