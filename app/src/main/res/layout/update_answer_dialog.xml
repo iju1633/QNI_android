@@ -31,6 +31,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
+        android:textColor="@color/colorPrimary"
         android:fontFamily="@font/qnifont"
         android:hint="Write your new answer here."
         android:inputType="textPersonName"
