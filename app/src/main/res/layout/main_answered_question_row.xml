@@ -40,6 +40,7 @@
             android:id="@+id/question"
             android:layout_width="250dp"
             android:layout_height="50dp"
+            android:gravity="center"
             android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/qnifont"
             android:textSize="16sp" />

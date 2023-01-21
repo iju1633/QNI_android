@@ -24,24 +24,27 @@
         android:layout_marginTop="12dp"
         android:clipChildren="false"
         android:elevation="5dp"
-        android:orientation="vertical"
-        android:paddingEnd="10dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/questionId"
 
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/qnifont"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/question"
             android:layout_width="250dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:fontFamily="@font/qnifont"
             android:textSize="16sp" />
 

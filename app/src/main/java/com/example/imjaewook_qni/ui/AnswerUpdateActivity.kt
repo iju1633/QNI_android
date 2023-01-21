@@ -1,6 +1,7 @@
 package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -103,6 +104,14 @@ class AnswerUpdateActivity : AppCompatActivity() {
                 val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), activityUpdateAnswerBinding.question.text.substring(0, activityUpdateAnswerBinding.question.text.indexOf(".")), ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
                 answerViewModel.updateAnswer(answerUpdateDTO)
             }
+        }
+
+        activityUpdateAnswerBinding.backToMain.setOnClickListener {
+
+            finish()
+
+            val intent = Intent(this@AnswerUpdateActivity, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

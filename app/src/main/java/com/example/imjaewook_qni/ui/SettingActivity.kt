@@ -73,6 +73,14 @@ class SettingActivity : AppCompatActivity() {
                 .setIcon(R.drawable.logo)
                 .show()
         }
+
+        activitySettingBinding.backToMain.setOnClickListener {
+
+            finish()
+
+            val intent = Intent(this@SettingActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun changeNickname() {

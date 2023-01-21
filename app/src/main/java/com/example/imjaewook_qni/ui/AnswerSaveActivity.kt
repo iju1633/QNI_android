@@ -1,6 +1,7 @@
 package com.example.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -80,6 +81,14 @@ class AnswerSaveActivity : AppCompatActivity() {
             val answerDTO = AnswerDTO(answer, questionId, userId)
 
             answerViewModel.saveAnswer(answerDTO)
+        }
+
+        activitySaveAnswerBinding.backToMain.setOnClickListener {
+
+            finish()
+
+            val intent = Intent(this@AnswerSaveActivity, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

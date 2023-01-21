@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,31 +14,46 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@color/colorPrimary"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:background="@color/colorPrimary">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/setting_icon" />
+                    android:id="@+id/backToMain"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/back_icon"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/qnifont"
-                    android:paddingBottom="25dp"
-                    android:text="Setting"
-                    android:textSize="30sp" />
+                    android:orientation="vertical"
+                    android:layout_marginEnd="60dp">
 
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/setting_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/qnifont"
+                        android:paddingBottom="25dp"
+                        android:text="Setting"
+                        android:textSize="30sp" />
+
+                </LinearLayout>
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"

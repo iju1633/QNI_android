@@ -1,5 +1,6 @@
 package com.example.imjaewook_qni.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,14 @@ class WordCloudActivity : AppCompatActivity() {
         setUpViewModel()
 
         viewModel.getCombinedAnswer(ImJaeWookQniApplication.prefs.getString("userId", "0"))
+
+        activityWordCloudBinding.backToMain.setOnClickListener {
+
+            finish()
+
+            val intent = Intent(this@WordCloudActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpViewModel() {
