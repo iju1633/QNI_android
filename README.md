@@ -24,7 +24,7 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 ## 💎 Main Features
 
 - HTTP REST API Server configured With Spring Boot Application.
-- Deploying using ec2 for now. Hoping to use Docker for deploying.
+- Deploying using docker and dockerhub.
 - DB management using Amazon RDS.
 
 
