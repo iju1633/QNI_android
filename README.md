@@ -29,10 +29,16 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 
 
 ## 📐 Deployment/Diagram
-- will be commented soon.
+![image](https://user-images.githubusercontent.com/43805087/213961889-1777c329-1e26-4774-9b74-c726983a649a.png)
+
+- Build with Gradle.
+- Build Jar file, Make Docker Image and deploy it using docker in Amazon EC2 instance.
+- Use Amazno RDS to manage DB easily.
 
 ## 🖥️ Build Environment
-- will be commented soon.
+This project uses Gradle, Amazon EC2, and Docker.
+To build and run this project, first build `.jar` with Gradle, and build docker image and push it to dockerhub.  
+After that, pull the image in Amazon EC2 and deploy it with docker.
 
 ## 📃 API Specification
 
@@ -70,7 +76,6 @@ This project utilize swagger Specification 2.0 and Swagger UI for communication 
   - implementation "androidx.navigation:navigation-compose:2.5.3"
   - implementation 'androidx.work:work-runtime-ktx:2.7.1'
   
-
 #### Contributor
 
 [Jaeuk Im](https://github.com/iju1633)
