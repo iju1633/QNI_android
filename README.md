@@ -5,7 +5,11 @@
 ![Android_Studio](https://img.shields.io/badge/Android_Studio-FFCC33?style=flat-square&logo=Androidstudio&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-4285F4?style=flat-square&logo=Docker&logoColor=white)
 
-This application asks you questions to help you understand yourself.
+This application asks you questions to help you understand yourself.  
+
+APK File
+<a href="https://drive.google.com/file/d/1e54c9MtYgdTVhBIG5zlV_eh6CXE0htle/view?usp=share_link"><img src="https://img.shields.io/badge/download-4285F4?style=flat-square&logo=googledrive&logoColor=white"/></a>
+
 
 ## 📱 Demo video (Click the icon!)
 
