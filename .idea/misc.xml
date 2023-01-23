@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/logo.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/question_box.xml" value="0.2645" />
         <entry key="app/src/main/res/drawable/tile_drawable.xml" value="0.1965" />
+        <entry key="app/src/main/res/drawable/white_box.xml" value="0.288" />
         <entry key="app/src/main/res/font-v26/qnifont.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/font/qnifont.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout-v26/main_answered_question_row.xml" value="0.15830800405268491" />
