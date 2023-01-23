@@ -7,6 +7,10 @@
 
 This application asks you questions to help you understand yourself.
 
+## 📱 Demo video (Click the icon!)
+
+[![QNI 시연 영상](https://user-images.githubusercontent.com/43805087/213970860-1e1cf54d-6014-4a9c-a4ef-cf4d609d9ca5.png)](https://www.youtube.com/embed/qi77ARROcXo)
+
 ## 📖 Explanation
 
 Many people cannot easily answer the question of who they are.
