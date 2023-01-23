@@ -9,7 +9,7 @@
 ![EC2](https://img.shields.io/badge/Amazon_EC2-4285F4?style=flat-square&logo=Amazon-EC2&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-4285F4?style=flat-square&logo=Docker&logoColor=white)
 
-This application asks you daily questions to help you understand yourself.
+This application asks you questions to help you understand yourself.
 
 ## 📖 Explanation
 
@@ -27,13 +27,12 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 - Deploying using docker and dockerhub.
 - DB management using Amazon RDS.
 
-
 ## 📐 Deployment/Diagram
-![image](https://user-images.githubusercontent.com/43805087/213961889-1777c329-1e26-4774-9b74-c726983a649a.png)
+![image](https://user-images.githubusercontent.com/43805087/213965640-d3178d15-c5d6-44b8-939b-2709ff1ae84a.png)
 
 - Build with Gradle.
 - Build Jar file, Make Docker Image and deploy it using docker in Amazon EC2 instance.
-- Use Amazno RDS to manage DB easily.
+- Using Amazon RDS to manage DB easily.
 
 ## 🖥️ Build Environment
 This project uses Gradle, Amazon EC2, and Docker.
