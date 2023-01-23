@@ -47,6 +47,29 @@ This project utilize swagger Specification 2.0 and Swagger UI for communication 
   - implementation 'org.springframework.boot:spring-boot-starter-validation'
   - implementation 'org.springframework.boot:spring-boot-starter-web'
   - implementation 'io.springfox:springfox-boot-starter:3.0.0'
+- Android
+  - implementation("io.coil-kt:coil:2.2.2")
+  - implementation "com.squareup.okhttp3:okhttp:3.4.2"
+  - implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+  - implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+  - implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+  - implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+  - implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+  - implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+  - implementation "androidx.lifecycle:lifecycle-service:2.3.1"
+  - implementation "androidx.activity:activity-ktx:1.2.2"
+  - implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+  - implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
+  - implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+  - implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+  - implementation 'com.google.code.gson:gson:2.8.9'
+  - implementation "com.google.dagger:hilt-android:2.44"
+  - kapt "com.google.dagger:hilt-android-compiler:2.44"
+  - implementation "androidx.hilt:hilt-work:1.0.0"
+  - kapt "com.google.dagger:hilt-compiler:2.44"
+  - implementation "androidx.navigation:navigation-compose:2.5.3"
+  - implementation 'androidx.work:work-runtime-ktx:2.7.1'
+  
 
 #### Contributor
 
