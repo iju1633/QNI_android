@@ -28,7 +28,7 @@ In addition, the accumulated data can be used as a tool to share with loved ones
 - DB management using Amazon RDS.
 
 ## 📐 Deployment/Diagram
-![image](https://user-images.githubusercontent.com/43805087/213965640-d3178d15-c5d6-44b8-939b-2709ff1ae84a.png)
+![image](https://user-images.githubusercontent.com/43805087/213965765-3cb45361-1419-4f37-b6ae-6580a0c0b167.png)
 
 - Build with Gradle.
 - Build Jar file, Make Docker Image and deploy it using docker in Amazon EC2 instance.
