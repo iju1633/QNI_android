@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
     id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.example.imjaewook_qni'
+    namespace 'com.qni.imjaewook_qni'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.imjaewook_qni"
+        applicationId "com.qni.imjaewook_qni"
         minSdk 24
         targetSdk 32
         versionCode 1
