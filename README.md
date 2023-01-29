@@ -13,7 +13,7 @@ APK File
 
 ## 📱 Demo video (Click the icon!)
 
-[![QNI 시연 영상](https://user-images.githubusercontent.com/43805087/213970860-1e1cf54d-6014-4a9c-a4ef-cf4d609d9ca5.png)](https://www.youtube.com/embed/qi77ARROcXo)
+[![QNI 시연 영상](https://user-images.githubusercontent.com/43805087/213970860-1e1cf54d-6014-4a9c-a4ef-cf4d609d9ca5.png)](https://youtu.be/86zI50cLk6w)
 
 ## 📖 Explanation
 
