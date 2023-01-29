@@ -25,7 +25,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var activityUpdateAnswerBinding: ActivityUpdateAnswerBinding
 
-    private val answerViewModel : AnswerViewModel by viewModels()
+    private val answerViewModel: AnswerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,12 @@ class AnswerUpdateActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        answerViewModel.getAnsweredUserQuestionList(ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+        answerViewModel.getAnsweredUserQuestionList(
+            ImJaeWookQniApplication.prefs.getString(
+                "userId",
+                "0"
+            ).toLong()
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,7 +55,8 @@ class AnswerUpdateActivity : AppCompatActivity() {
 
             Log.v("답변된 질문의 id : ", chosenAnsweredQuestionId.toString())
 
-            activityUpdateAnswerBinding.question.text = question[chosenAnsweredQuestionId].questionId.toString() + ". " + question[chosenAnsweredQuestionId].question
+            activityUpdateAnswerBinding.question.text =
+                question[chosenAnsweredQuestionId].questionId.toString() + ". " + question[chosenAnsweredQuestionId].question
             activityUpdateAnswerBinding.answerBox.text = question[chosenAnsweredQuestionId].answer
         }
 
@@ -79,7 +85,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
         activityUpdateAnswerBinding.answerBox.setOnClickListener {
 
             val secondIntent = intent
-            val chosenAnsweredQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0) // TODO: 값이 안 넘어왔음
+            val chosenAnsweredQuestionId = secondIntent.getIntExtra("ChosenAnsweredQuestionId", 0)
 
             Log.v("답변을 수정할 질문의 id : ", chosenAnsweredQuestionId.toString())
 
@@ -93,7 +99,7 @@ class AnswerUpdateActivity : AppCompatActivity() {
                     activityUpdateAnswerBinding.answerBox.text = dialogText.text.toString()
 
                 }
-                .setNegativeButton("cancel") {_, _ ->
+                .setNegativeButton("cancel") { _, _ ->
 
                 }
                 .setIcon(R.drawable.logo)
@@ -101,7 +107,14 @@ class AnswerUpdateActivity : AppCompatActivity() {
 
             activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
 
-                val answerUpdateDTO = AnswerUpdateDTO(dialogText.text.toString(), activityUpdateAnswerBinding.question.text.substring(0, activityUpdateAnswerBinding.question.text.indexOf(".")), ImJaeWookQniApplication.prefs.getString("userId", "0").toLong())
+                val answerUpdateDTO = AnswerUpdateDTO(
+                    dialogText.text.toString(),
+                    activityUpdateAnswerBinding.question.text.substring(
+                        0,
+                        activityUpdateAnswerBinding.question.text.indexOf(".")
+                    ),
+                    ImJaeWookQniApplication.prefs.getString("userId", "0").toLong()
+                )
                 answerViewModel.updateAnswer(answerUpdateDTO)
             }
         }
