@@ -5,17 +5,15 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.qni.imjaewook_qni.ImJaeWookQniApplication
@@ -25,7 +23,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
-import java.lang.Exception
 
 @AndroidEntryPoint
 class WordCloudActivity : AppCompatActivity() {
@@ -40,8 +37,8 @@ class WordCloudActivity : AppCompatActivity() {
         activityWordCloudBinding = ActivityWordcloudBinding.inflate(layoutInflater)
         setContentView(activityWordCloudBinding.root)
 
-        setUpUI()
         setUpViewModel()
+        setUpUI()
 
         viewModel.getCombinedAnswer(ImJaeWookQniApplication.prefs.getString("userId", "0"))
     }
@@ -55,12 +52,11 @@ class WordCloudActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 이미지 불러온 이후 가져와야 함
         activityWordCloudBinding.saveToGallery.setOnClickListener {
 
-            val bitmap = getImageOfView(activityWordCloudBinding.wordCloud)
-            if (bitmap != null) {
-                saveToGallery(bitmap)
-            }
+            val bitmap = activityWordCloudBinding.wordCloud.drawable.toBitmap()
+            saveToGallery(bitmap)
         }
     }
 
@@ -96,19 +92,6 @@ class WordCloudActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-    }
-
-    private fun getImageOfView(view: ImageView): Bitmap? {
-        var image : Bitmap? = null
-        try {
-            image = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(image)
-            view.draw(canvas)
-        } catch (e: Exception) {
-            Log.e("GETTING_IMAGE_OF_IMAGEVIEW", "Cannot Capture the image from word cloud view.")
-        }
-
-        return image
     }
 
     private fun setUpViewModel() {
