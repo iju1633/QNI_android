@@ -29,7 +29,6 @@ import java.lang.Exception
 
 @AndroidEntryPoint
 class WordCloudActivity : AppCompatActivity() {
-    // TODO: 권한 요청
 
     private lateinit var activityWordCloudBinding: ActivityWordcloudBinding
     lateinit var viewModel: WordCloudViewModel
@@ -45,8 +44,6 @@ class WordCloudActivity : AppCompatActivity() {
         setUpViewModel()
 
         viewModel.getCombinedAnswer(ImJaeWookQniApplication.prefs.getString("userId", "0"))
-
-
     }
 
     private fun setUpUI() {
