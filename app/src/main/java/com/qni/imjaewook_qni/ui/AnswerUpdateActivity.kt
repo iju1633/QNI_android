@@ -2,7 +2,6 @@ package com.qni.imjaewook_qni.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.qni.imjaewook_qni.ImJaeWookQniApplication
 import com.qni.imjaewook_qni.R
-import com.qni.imjaewook_qni.api.dto.AnswerDTO
 import com.qni.imjaewook_qni.api.dto.AnswerUpdateDTO
 import com.qni.imjaewook_qni.databinding.ActivityMainBinding
 import com.qni.imjaewook_qni.databinding.ActivityUpdateAnswerBinding

@@ -11,7 +11,6 @@ import com.qni.imjaewook_qni.ImJaeWookQniApplication
 import com.qni.imjaewook_qni.api.dto.AnswerDTO
 import com.qni.imjaewook_qni.databinding.ActivityMainBinding
 import com.qni.imjaewook_qni.databinding.ActivitySaveAnswerBinding
-import com.qni.imjaewook_qni.databinding.ActivityUpdateAnswerBinding
 import com.qni.imjaewook_qni.ui.viewmodel.AnswerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,13 +54,13 @@ class AnswerSaveActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     Toast.makeText(
                         this@AnswerSaveActivity,
-                        "Your answer has been saved !!",
+                        "Your answer has been saved.",
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
                     Toast.makeText(
                         this@AnswerSaveActivity,
-                        "You already answered this question.",
+                        "Nothing has been written or has already been answered.",
                         Toast.LENGTH_LONG
                     ).show()
                 }
