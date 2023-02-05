@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -87,21 +88,29 @@ class AnswerUpdateActivity : AppCompatActivity() {
 
             Log.v("답변을 수정할 질문의 id : ", chosenAnsweredQuestionId.toString())
 
-            val builder = AlertDialog.Builder(this)
 
             val dialogView = layoutInflater.inflate(R.layout.update_answer_dialog, null)
             val dialogText = dialogView.findViewById<EditText>(R.id.newAnswer)
 
+            // 다이얼로그 생성
+            val builder = AlertDialog.Builder(this)
             builder.setView(dialogView)
-                .setPositiveButton("save") { _, _ ->
-                    activityUpdateAnswerBinding.answerBox.text = dialogText.text.toString()
+            builder.setIcon(R.drawable.logo)
+            builder.setPositiveButton("save") { _, _ ->
+                activityUpdateAnswerBinding.answerBox.text = dialogText.text.toString()
+            }
+            builder.setNegativeButton("cancel") { _, _ ->
 
-                }
-                .setNegativeButton("cancel") { _, _ ->
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
 
-                }
-                .setIcon(R.drawable.logo)
-                .show()
+            // 다이얼로그 resize
+            val layoutParams = WindowManager.LayoutParams()
+            layoutParams.copyFrom(alertDialog.window!!.attributes)
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+            layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+            alertDialog.window!!.attributes = layoutParams
 
             activityUpdateAnswerBinding.answerUpdateButton.setOnClickListener {
 

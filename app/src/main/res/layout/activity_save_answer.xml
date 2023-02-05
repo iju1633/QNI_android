@@ -33,36 +33,42 @@
             android:textSize="25sp" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/answerBox"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/white_box"
-        android:fontFamily="@font/qnifont"
-        android:gravity="center"
-        android:hint="Write your answer here."
-        android:paddingTop="50dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25sp"
-        tools:ignore="RtlSymmetry" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/answerBox"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_box"
+            android:fontFamily="@font/qnifont"
+            android:gravity="center"
+            android:hint="Write your answer here."
+            android:paddingTop="50dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp"
+            tools:ignore="RtlSymmetry" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/answerSaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|center"
             android:background="@color/colorPrimaryDark"
             android:text="SAVE"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
