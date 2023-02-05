@@ -31,8 +31,8 @@
 
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/qnifont"
             android:textSize="20sp" />
 
@@ -40,12 +40,12 @@
             android:id="@+id/question"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="40dp"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:fontFamily="@font/qnifont"
+            android:gravity="center"
             android:textSize="16sp" />
 
     </LinearLayout>

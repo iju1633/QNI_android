@@ -18,5 +18,4 @@
         android:src="@drawable/logo"
         tools:ignore="MissingConstraints" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

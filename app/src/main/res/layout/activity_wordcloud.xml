@@ -62,14 +62,13 @@
 
         <Button
             android:id="@+id/saveToGallery"
-            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAVE"
-            android:textColor="#FFFFFF"
-            android:background="@color/colorPrimaryDark"
             android:layout_gravity="center|bottom"
-            />
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="SAVE"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </LinearLayout>
