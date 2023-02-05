@@ -63,7 +63,7 @@ class SettingActivity : AppCompatActivity() {
             val dialogView = layoutInflater.inflate(R.layout.withdraw_user_dialog, null)
 
             builder.setView(dialogView)
-                .setPositiveButton("save") { _, _ ->
+                .setPositiveButton("confirm") { _, _ ->
 
                     withdrawUser()
                 }
