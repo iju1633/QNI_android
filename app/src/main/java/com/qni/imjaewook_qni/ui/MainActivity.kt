@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         setUpViewModel()
 
         activityMainBinding.logout.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        activityMainBinding.questionList.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        activityMainBinding.answeredQuestionList.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         activityMainBinding.settingButton.setOnClickListener {
             val intent = Intent(this@MainActivity, SettingActivity::class.java)
