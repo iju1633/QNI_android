@@ -53,7 +53,7 @@ class LoginLoadingActivity : AppCompatActivity() {
 
             if (it == null) {
 
-                Toast.makeText(this@LoginLoadingActivity, "Failed to login", Toast.LENGTH_LONG)
+                Toast.makeText(this@LoginLoadingActivity, "Please try again", Toast.LENGTH_LONG)
                     .show()
 
                 finish()
