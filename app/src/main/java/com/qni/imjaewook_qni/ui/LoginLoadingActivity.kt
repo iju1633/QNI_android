@@ -16,7 +16,6 @@ import com.qni.imjaewook_qni.ui.viewmodel.LoginViewModel
 import com.qni.imjaewook_qni.ui.viewmodel.MainViewModel
 import com.qni.imjaewook_qni.util.Const
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class LoginLoadingActivity : AppCompatActivity() {
