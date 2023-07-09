@@ -1,4 +1,4 @@
-# QNI (2023, Pipecoding Club Assignment)
+# QNI (Question aNd I)
 
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-007396?style=flat-square&logo=Kotlin&logoColor=white)
